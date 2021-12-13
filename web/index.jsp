@@ -136,8 +136,10 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="listaServicios.jsp" class="button">Ver servicios</a></li>
-						</ul>
+                                                    <form action="SvConsultarServicios" method="GET">
+                                                            <li><a href="SvConsultarServicios" class="button">Ver servicios</a></li>
+                                                        </form>
+                                                </ul>
 					</section>
 				</div>
 			</div>

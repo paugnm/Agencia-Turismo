@@ -32,8 +32,8 @@
             </thead>
             <tbody>
                 
-                <% Controladora control = new Controladora();
-                       List<ServicioTuristico> listaServicios = control.obtenerServiciosTuristicos();
+                <%     HttpSession miSession = request.getSession();
+                       List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
                        for (ServicioTuristico serv : listaServicios) { 
                 %>  
                 

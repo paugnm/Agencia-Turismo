@@ -41,8 +41,16 @@ public class SvServicioTuristico extends HttpServlet {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = formato.parse(request.getParameter("fecha"));
             Double costo = Double.parseDouble(request.getParameter("costo"));
+                        
+            request.getSession().setAttribute("costo", costo);
+            request.getSession().setAttribute("destino", destino);
+            request.getSession().setAttribute("descripcion", descripcion);
+            request.getSession().setAttribute("fechaServicio", fecha);
+            request.getSession().setAttribute("nombreServicio", nombre);
+            
             control.crearServicio(nombre, destino, descripcion, fecha, costo);
             response.sendRedirect("formularioServicio.jsp");
+            
         } catch (Exception ex) {
            Logger.getLogger(SvServicioTuristico.class.getName()).log(Level.SEVERE, null, ex);
         }
