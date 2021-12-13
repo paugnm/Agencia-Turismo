@@ -8,6 +8,8 @@ public class Controladora {
     
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
+    
+    /*----------------------Control Servicios-----------------------------------*/
     public void altaServicio(ServicioTuristico servicio) {
         controlPersis.crearServicioTuristico(servicio);
     }
@@ -45,5 +47,91 @@ public class Controladora {
         servicio.setCosto(costo);
         
         this.altaServicio(servicio);
+    }    
+    
+    /*----------------------Control Clientes-----------------------------------*/
+    public void altaCliente(Cliente cli) {
+        controlPersis.crearCliente(cli);
+    }
+    
+    public void bajaCliente(Cliente cli) {
+        controlPersis.eliminarCliente(cli);
+    }
+    
+    public void bajaCliente(int id) {
+        controlPersis.eliminarCliente(id);        
+    }
+    
+    public List<Cliente> obtenerClientes() {
+       return controlPersis.obtenerClientes();
+    }
+    
+    public void modificarCliente(Cliente cli) {
+        controlPersis.modificarCliente(cli);
+    } 
+    
+    public Cliente buscarCliente(Cliente cli) {
+        return controlPersis.buscarCliente(cli);
+    }
+    
+    public Cliente buscarCliente(int id) {
+        return controlPersis.buscarCliente(id); 
+    }
+
+    public void crearCliente(String nombre, String apellido, int dni, String direccion, Date fNac, String nacionalidad, String email, int celular) {
+        Cliente cli = new Cliente();        
+        cli.setApellido(apellido);
+        cli.setCelular(celular);
+        cli.setDireccion(direccion);
+        cli.setNombre(nombre);
+        cli.setEmail(email);
+        cli.setDni(dni);
+        cli.setFechaNacimiento(fNac);
+        cli.setNacionalidad(nacionalidad);
+        this.altaCliente(cli);
+    }
+
+ /*----------------------Control Empleados-----------------------------------*/
+    public void altaEmpleado(Empleado emple) {
+        controlPersis.crearEmpleado(emple);
+    }
+    
+    public void bajaEmpleado(Empleado emple) {
+        controlPersis.eliminarEmpleado(emple);
+    }
+    
+    public void bajaEmpleado(int id) {
+        controlPersis.eliminarEmpleado(id);        
+    }
+    
+    public List<Empleado> obtenerEmpleados() {
+       return controlPersis.obtenerEmpleados();
+    }
+    
+    public void modificarEmpleado(Empleado emple) {
+        controlPersis.modificarEmpleado(emple);
+    } 
+    
+    public Empleado buscarEmpleado(Empleado emple) {
+        return controlPersis.buscarEmpleado(emple);
+    }
+    
+    public Empleado buscarEmpleado(int id) {
+        return controlPersis.buscarEmpleado(id); 
+    }
+
+    public void crearEmpleado(String cargo, double sueldo, String nombre, String apellido, int dni, String direccion, Date fNac, String nacionalidad, String email, int celular) {
+        Empleado emple = new Empleado();        
+        emple.setApellido(apellido);
+        emple.setCelular(celular);
+        emple.setDireccion(direccion);
+        emple.setNombre(nombre);
+        emple.setEmail(email);
+        emple.setDni(dni);
+        emple.setFechaNacimiento(fNac);
+        emple.setNacionalidad(nacionalidad);
+        emple.setSueldo(sueldo);
+        emple.setCargo(cargo);
+        this.altaEmpleado(emple);
     }    
 }

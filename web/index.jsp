@@ -20,7 +20,7 @@
 			<nav>
 				<ul>
 					<li><a href="#intro">Inicio</a></li>
-					<li><a href="#one">Clientes</a></li>
+					<li><a href="#one">Empleados</a></li>
 					<li><a href="#two">Servicios</a></li>
 					<li><a href="#three">Paquetes</a></li>
 					<li><a href="#four">Ventas</a></li>
@@ -46,10 +46,10 @@
 		</section>
 
 		<!-- One -->
-		<!-- Clientes -->
+		<!-- Empleados -->
 		<section id="one" class="wrapper style2 fade-up">
 			<div class="inner">
-				<h2>Clientes</h2>
+				<h2>Empleados</h2>
 				<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat
 					malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet
 					imperdiet est velit quis lorem.</p>
@@ -60,7 +60,7 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="generic.html" class="button">Nuevo cliente</a></li>
+							<li><a href="formularioEmpleado.jsp" class="button">Nuevo empleado</a></li>
 						</ul>
 					</section>
 					<section>
