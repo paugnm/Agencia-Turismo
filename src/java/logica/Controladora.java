@@ -134,4 +134,8 @@ public class Controladora {
         emple.setCargo(cargo);
         this.altaEmpleado(emple);
     }    
+
+    public Empleado buscarEmpleado(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
