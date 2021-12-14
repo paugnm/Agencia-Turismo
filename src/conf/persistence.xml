@@ -6,6 +6,7 @@
     <class>logica.Persona</class>
     <class>logica.Empleado</class>
     <class>logica.Cliente</class>
+    <class>logica.Paquete</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/agencia?serverTimezone=UTC"/>

@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Cliente;
 import logica.Empleado;
+import logica.Paquete;
 import logica.ServicioTuristico;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -13,6 +14,7 @@ public class ControladoraPersistencia {
     ServicioTuristicoJpaController servicioJPA = new ServicioTuristicoJpaController();
     EmpleadoJpaController empleadoJPA = new EmpleadoJpaController();
     ClienteJpaController clienteJPA = new ClienteJpaController();
+    PaqueteJpaController paqueteJPA = new PaqueteJpaController();
     
     
     /*--------------------------------------Controladora de Servicios----------------------------------------*/
@@ -175,4 +177,57 @@ public class ControladoraPersistencia {
     }
     
     
+    /*--------------------------------------Controladora de Paquetes----------------------------------------*/
+    
+    public void crearPaquete(Paquete paquete) {
+        try {
+            paqueteJPA.create(paquete);
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el servicio turístico");
+        }                     
+    }
+    
+    //Eliminar un paquete pasando el objeto como párametro
+    public void eliminarPaquete(Paquete paquete) {
+        try {
+            paqueteJPA.destroy(paquete.getCodigo());
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     //Eliminar un paquete pasando el codigo de dicho paquete como parámetro
+    public void eliminarPaquete(int cod) {
+        try {
+            paqueteJPA.destroy(cod);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    //Método para lectura
+    public List<Paquete> obtenerPaquetes() {
+        return paqueteJPA.findPaqueteEntities();
+    }
+    
+    //Método para modificar 
+    public void modificarPaquete(Paquete paquete) {
+        try {
+            paqueteJPA.edit(paquete);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    
+    //Método para búsqueda pasando el objeto completo
+    public Paquete buscarPaquete(Paquete paquete) {
+        return paqueteJPA.findPaquete(paquete.getCodigo());
+    }
+    
+    //Método para búsqueda pasando el codigo de paquete
+    public Paquete buscarPaquete(int codigo) {
+        return paqueteJPA.findPaquete(codigo);
+    }
+     
 }

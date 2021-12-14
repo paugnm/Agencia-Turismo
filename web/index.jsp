@@ -24,6 +24,7 @@
 					<li><a href="#two">Servicios</a></li>
 					<li><a href="#three">Clientes</a></li>
 					<li><a href="#four">Ventas</a></li>
+                                        <li><a href="#five">Paquetes</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -242,6 +243,59 @@
 							ultricies erat dapibus.</p>
 						<ul class="actions">
 							<li><a href="generic.html" class="button">Consultar</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</section>
+                
+                <!-- Five -->
+		<!-- Paquetes -->
+		<section id="five" class="wrapper style1 fade-up">
+			<div class="inner">
+				<h2>Paquetes</h2>
+				<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat
+					malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet
+					imperdiet est velit quis lorem.</p>
+				<div class="features">
+					<section>
+						<span class="icon solid major fa-code"></span>
+						<h3>Alta</h3>
+						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+							ultricies erat dapibus.</p>
+						<ul class="actions">
+                                                        <form action="SvPaquete" method="GET">
+                                                            <li><a href="SvPaquete" class="button">Nuevo paquete</a></li>
+                                                        </form>
+						</ul>
+					</section>
+					<section>
+						<span class="icon solid major fa-lock"></span>
+						<h3>Baja</h3>
+						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+							ultricies erat dapibus.</p>
+						<ul class="actions">
+							<li><a href="generic.html" class="button">Eliminar</a></li>
+						</ul>
+					</section>
+					<section>
+						<span class="icon solid major fa-cog"></span>
+						<h3>Modificación</h3>
+						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+							ultricies erat dapibus.</p>
+						<ul class="actions">
+							<li><a href="generic.html" class="button">Modificar</a></li>
+						</ul>
+					</section>
+					<section>
+						<span class="icon solid major fa-desktop"></span>
+						<h3>Consulta</h3>
+						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+							ultricies erat dapibus.</p>
+						<ul class="actions">
+                                                    <form> action="SvConsultarPaquetes" method="GET">
+                                                            <li><a href="SvConsultarPaquetes" class="button">Ver Paquetes</a></li>
+                                                    </form>
 						</ul>
 					</section>
 				</div>

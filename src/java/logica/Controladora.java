@@ -138,4 +138,41 @@ public class Controladora {
     public Empleado buscarEmpleado(String parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    /*----------------------Control Paquetes-----------------------------------*/
+    public void altaPaquete(Paquete paquete) {
+        controlPersis.crearPaquete(paquete);
+    }
+    
+    public void bajaPaquete(Paquete paquete) {
+        controlPersis.eliminarPaquete(paquete);
+    }
+    
+    public void bajaPaquete(int codigo) {
+        controlPersis.eliminarPaquete(codigo);        
+    }
+    
+    public List<Paquete> obtenerPaquetes() {
+       return controlPersis.obtenerPaquetes();
+    }
+    
+    public void modificarPaquete(Paquete paquete) {
+        controlPersis.modificarPaquete(paquete);
+    } 
+    
+    public Paquete buscarPaquete(Paquete paquete) {
+        return controlPersis.buscarPaquete(paquete);
+    }
+    
+    public Paquete buscarPaquete(int codigo) {
+        return controlPersis.buscarPaquete(codigo); 
+    }
+
+    public void crearPaquete(List<ServicioTuristico> listaServiciosIncluidos) {
+        Paquete paquete = new Paquete();
+        paquete.setListaServiciosIncluidos(listaServiciosIncluidos);
+        
+        this.altaPaquete(paquete);
+    }   
+    
 }
