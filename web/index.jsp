@@ -22,7 +22,7 @@
 					<li><a href="#intro">Inicio</a></li>
 					<li><a href="#one">Empleados</a></li>
 					<li><a href="#two">Servicios</a></li>
-					<li><a href="#three">Paquetes</a></li>
+					<li><a href="#three">Clientes</a></li>
 					<li><a href="#four">Ventas</a></li>
 				</ul>
 			</nav>
@@ -148,10 +148,10 @@
 		</section>
 
 		<!-- Three -->
-		<!-- Paquetes -->
+		<!-- Clientes -->
 		<section id="three" class="wrapper style1 fade-up">
 			<div class="inner">
-				<h2>Paquetes</h2>
+				<h2>Clientes</h2>
 				<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat
 					malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet
 					imperdiet est velit quis lorem.</p>
@@ -162,7 +162,7 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="generic.html" class="button">Nuevo paquete</a></li>
+							<li><a href="formularioCliente.jsp" class="button">Nuevo Cliente</a></li>
 						</ul>
 					</section>
 					<section>
@@ -171,7 +171,7 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="generic.html" class="button">Eliminar paquete</a></li>
+							<li><a href="generic.html" class="button">Eliminar Cliente</a></li>
 						</ul>
 					</section>
 					<section>
@@ -189,7 +189,9 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="generic.html" class="button">Consultar</a></li>
+						    <form action="SvConsultarClientes" method="GET">
+                                                            <li><a href="SvConsultarClientes" class="button">Ver Clientes</a></li>
+                                                    </form>
 						</ul>
 					</section>
 				</div>

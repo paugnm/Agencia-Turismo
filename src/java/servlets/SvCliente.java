@@ -13,14 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Controladora;
 
-@WebServlet(name = "SvEmpleado", urlPatterns = {"/SvEmpleado"})
-public class SvEmpleado extends HttpServlet {
+
+@WebServlet(name = "SvCliente", urlPatterns = {"/SvCliente"})
+public class SvCliente extends HttpServlet {
     
     Controladora control = new Controladora();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
     }
 
     @Override
@@ -33,37 +34,31 @@ public class SvEmpleado extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String nombre = request.getParameter("nombreEmple");
-            String apellido = request.getParameter("apellidoEmple");
+            String nombre = request.getParameter("nombreCli");
+            String apellido = request.getParameter("apellidoCli");
             String direccion = request.getParameter("direccion");
             int dni = Integer.parseInt(request.getParameter("dni"));
             String nacionalidad = request.getParameter("nacionalidad");
             int celular = Integer.parseInt(request.getParameter("celular"));
             String email = request.getParameter("email");
-            String cargo = request.getParameter("cargo");
-            double sueldo = Double.parseDouble(request.getParameter("sueldo"));
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fechaNac = formato.parse(request.getParameter("fechaNac"));
             
-            request.getSession().setAttribute("nombreEmple", nombre);
-            request.getSession().setAttribute("apellidoEmple", apellido);
+            request.getSession().setAttribute("nombreCli", nombre);
+            request.getSession().setAttribute("apellidoCli", apellido);
             request.getSession().setAttribute("celular", celular);
             request.getSession().setAttribute("direccion", direccion);
             request.getSession().setAttribute("dni", dni);
             request.getSession().setAttribute("nacionalidad", nacionalidad);
             request.getSession().setAttribute("email", email);
-            request.getSession().setAttribute("cargo", cargo);
             request.getSession().setAttribute("fechaNacimiento", fechaNac);
-            request.getSession().setAttribute("sueldo", sueldo);
             
-            control.crearEmpleado(cargo, sueldo, nombre, apellido, dni, direccion, fechaNac, nacionalidad, email, celular);
-            response.sendRedirect("formularioEmpleado.jsp");
+            control.crearCliente(nombre, apellido, dni, direccion, fechaNac, nacionalidad, email, celular);
+            response.sendRedirect("formularioCliente.jsp");
             
         } catch (ParseException ex) {
             Logger.getLogger(SvEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-            
     }
 
     @Override

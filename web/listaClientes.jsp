@@ -1,11 +1,11 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
-<%@page import="logica.Empleado"%>
+<%@page import="logica.Cliente"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -34,55 +34,49 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 <%     HttpSession miSession = request.getSession();
-                       List<Empleado> listaEmpleados = (List) miSession.getAttribute("listaEmpleados");
-                       for (Empleado emple : listaEmpleados) { 
+                    List<Cliente> listaClientes = (List) miSession.getAttribute("listaClientes");
+                    for (Cliente cli : listaClientes) {
                 %>  
-                
+
                 <tr>   
-                    <%String nombre = emple.getNombre();%>
+                    <%String nombre = cli.getNombre();%>
                     <td><%=nombre%> </td>
-                    
-                    <%String ape = emple.getApellido();%>
+
+                    <%String ape = cli.getApellido();%>
                     <td><%=ape%> </td>
-                    
-                    <%String direccion = emple.getDireccion();%>
+
+                    <%String direccion = cli.getDireccion();%>
                     <td><%=direccion%></td>
-                    
-                    <%int dni = emple.getDni();%>
+
+                    <%int dni = cli.getDni();%>
                     <td><%=dni%></td>
-                    
+
                     <%
                         DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-                        String fecha = formato.format(emple.getFechaNacimiento());%>
+                        String fecha = formato.format(cli.getFechaNacimiento());%>
                     <td><%=fecha%></td>
-                    
-                    <%String nacion = emple.getNacionalidad();%>
+
+                    <%String nacion = cli.getNacionalidad();%>
                     <td><%=nacion%></td>
-                    
-                     <%int celu = emple.getCelular();%>
+
+                    <%int celu = cli.getCelular();%>
                     <td><%=celu%></td>
-                    
-                     <%String email = emple.getEmail();%>
+
+                    <%String email = cli.getEmail();%>
                     <td><%=email%></td>
-                    
-                     <%String cargo = emple.getCargo();%>
-                    <td><%=cargo%></td>
-                    
-                     <%double sueldo = emple.getSueldo();%>
-                    <td><%=sueldo%></td>
-                    
-                    <%int id = emple.getId();%>
+
+                    <%int id = cli.getId();%>
                     <td>
-                        <form name="frmBorrarEmpleado"  action="SvEliminarEmpleado" method="POST">
+                        <form name="frmBorrarCliente"  action="SvEliminarCliente" method="POST">
                             <input type="hidden" name="id" value="<%=id%>">
                             <button type="submit" class="btn btn-danger">Borrar</button>
                         </form>
                     </td>
-                    
+
                     <td>
-                        <form name="frmModificarEmpleado"  action="SvModificarEmpleado" method="POST">
+                        <form name="frmModificarCliente"  action="SvModificarCliente" method="POST">
                             <input type="hidden" name="id" value="<%=id%>">
                             <button type="submit" class="btn btn-primary">Modificar</button>
                         </form>

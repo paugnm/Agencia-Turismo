@@ -8,24 +8,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logica.Cliente;
 import logica.Controladora;
-import logica.Empleado;
 
-@WebServlet(name = "SvConsultarEmpleados", urlPatterns = {"/SvConsultarEmpleados"})
-public class SvConsultarEmpleados extends HttpServlet {
+
+@WebServlet(name = "SvConsultarClientes", urlPatterns = {"/SvConsultarClientes"})
+public class SvConsultarClientes extends HttpServlet {
     Controladora control = new Controladora();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            List<Empleado> listaEmpleados = control.obtenerEmpleados();
+            List<Cliente> listaClientes = control.obtenerClientes();
             HttpSession miSession = request.getSession();
-            miSession.setAttribute("listaEmpleados", listaEmpleados);
-            response.sendRedirect("listaEmpleados.jsp");
+            miSession.setAttribute("listaClientes", listaClientes);
+            response.sendRedirect("listaClientes.jsp");
     }
 
     @Override
