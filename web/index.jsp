@@ -293,7 +293,7 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-                                                    <form> action="SvConsultarPaquetes" method="GET">
+                                                    <form action="SvConsultarPaquetes" method="GET">
                                                             <li><a href="SvConsultarPaquetes" class="button">Ver Paquetes</a></li>
                                                     </form>
 						</ul>

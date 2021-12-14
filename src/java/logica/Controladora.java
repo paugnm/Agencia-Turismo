@@ -171,7 +171,7 @@ public class Controladora {
     public void crearPaquete(List<ServicioTuristico> listaServiciosIncluidos) {
         Paquete paquete = new Paquete();
         paquete.setListaServiciosIncluidos(listaServiciosIncluidos);
-        
+        paquete.setCosto(paquete.calcularCosto());
         this.altaPaquete(paquete);
     }   
     

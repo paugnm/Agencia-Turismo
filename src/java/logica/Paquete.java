@@ -56,6 +56,14 @@ public class Paquete implements Serializable {
         this.listaServiciosIncluidos = listaServiciosIncluidos;
     }
     
+    public double calcularCosto() {
+        this.costo = 0;
+        for(ServicioTuristico serv : listaServiciosIncluidos){
+            costo += serv.getCosto();
+        }        
+        return costo -= costo*0.1;
+    }
+    
     
     
 }

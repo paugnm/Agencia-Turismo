@@ -36,7 +36,7 @@
 
             <div class="col-md-12 form-check">
                 <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected">
-                <label class="form-check-label" for="servicio"><%=serv.getNombre()%></label>
+                <label class="form-check-label" for="servicio"><%=serv.getNombre()%> - <%=serv.getDescripcion()%></label>
             </div>
             <%}%>     
             <div class="col-12">
