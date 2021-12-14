@@ -87,7 +87,9 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="generic.html" class="button">Consultar</a></li>
+                                                    <form action="SvConsultarEmpleados" method="GET">
+							<li><a href="SvConsultarEmpleados" class="button">Consultar</a></li>
+                                                    </form>    
 						</ul>
 					</section>
 				</div>
@@ -138,7 +140,7 @@
 						<ul class="actions">
                                                     <form action="SvConsultarServicios" method="GET">
                                                             <li><a href="SvConsultarServicios" class="button">Ver servicios</a></li>
-                                                        </form>
+                                                    </form>
                                                 </ul>
 					</section>
 				</div>

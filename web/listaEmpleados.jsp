@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="logica.Empleado"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -39,35 +41,49 @@
                 %>  
                 
                 <tr>   
-                    <%String nombreServicio = serv.getNombre();%>
-                    <td><%=nombreServicio%> </td>
+                    <%String nombre = emple.getNombre();%>
+                    <td><%=nombre%> </td>
                     
-                    <%String descrip = serv.getDescripcion();%>
-                    <td><%=descrip%></td>
+                    <%String ape = emple.getApellido();%>
+                    <td><%=ape%> </td>
                     
-                    <%String destino = serv.getDestino();%>
-                    <td><%=destino%></td>
+                    <%String direccion = emple.getDireccion();%>
+                    <td><%=direccion%></td>
+                    
+                    <%int dni = emple.getDni();%>
+                    <td><%=dni%></td>
                     
                     <%
                         DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-                        String fecha = formato.format(serv.getFecha());%>
+                        String fecha = formato.format(emple.getFechaNacimiento());%>
                     <td><%=fecha%></td>
                     
-                    <%double costo = serv.getCosto();%>
-                    <td><%=costo%></td>
+                    <%String nacion = emple.getNacionalidad();%>
+                    <td><%=nacion%></td>
                     
-                    <%int codigoServicio = serv.getCodigo();%>
+                     <%int celu = emple.getCelular();%>
+                    <td><%=celu%></td>
                     
+                     <%String email = emple.getEmail();%>
+                    <td><%=email%></td>
+                    
+                     <%String cargo = emple.getCargo();%>
+                    <td><%=cargo%></td>
+                    
+                     <%double sueldo = emple.getSueldo();%>
+                    <td><%=sueldo%></td>
+                    
+                    <%int id = emple.getId();%>
                     <td>
-                        <form name="frmBorrarServicio"  action="SvEliminarServicio" method="post">
-                            <input type="hidden" name="codigoServicio" value="<%=codigoServicio%>">
+                        <form name="frmBorrarEmpleado"  action="SvEliminarEmpleado" method="POST">
+                            <input type="hidden" name="id" value="<%=id%>">
                             <button type="submit" class="btn btn-danger">Borrar</button>
                         </form>
                     </td>
                     
                     <td>
-                        <form name="frmModificarServicio"  action="SvModificarServicio" method="post">
-                            <input type="hidden" name="codigoServicio" value="<%=codigoServicio%>">
+                        <form name="frmModificarServicio"  action="SvModificarEmpleado" method="POST">
+                            <input type="hidden" name="id" value="<%=id%>">
                             <button type="submit" class="btn btn-primary">Modificar</button>
                         </form>
                     </td>                   
