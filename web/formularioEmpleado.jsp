@@ -19,9 +19,10 @@
         </style>
         <title>Empleado</title>
     </head>
+    
     <body>
         <h1>Nuevo Empleado</h1>
-        <form class="row g-3" action="" method="POST">
+        <form class="row g-3" action="SvEmpleado" method="POST">
             <div class="col-md-6">
                 <label for="nombreEmple" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombreEmple" name="nombreEmple">
@@ -40,7 +41,7 @@
             </div>
             <div class="col-md-6">
                 <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
-                <input type="text" class="form-control" id="fechaNac" name="fechaNac">
+                <input type="Date" class="form-control" id="fechaNac" name="fechaNac">
             </div>
             <div class="col-md-6">
                 <label for="nacionalidad" class="form-label">Nacionalidad</label>
@@ -52,7 +53,15 @@
             </div>
             <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="text" class="form-control" id="email" name="email">
+            </div>
+            <div class="col-md-6">
+                <label for="cargo" class="form-label">Cargo</label>
+                <input type="text" class="form-control" id="cargo" name="cargo">
+            </div>
+            <div class="col-md-6">
+                <label for="sueldo" class="form-label">Sueldo</label>
+                <input type="text" class="form-control" id="sueldo" name="sueldo">
             </div>
 
             <div class="col-12">
