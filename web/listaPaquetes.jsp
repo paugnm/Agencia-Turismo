@@ -29,7 +29,7 @@
             </thead>
 
             <tbody>                
-                <%     HttpSession miSession = request.getSession();
+                <%  HttpSession miSession = request.getSession();
                     List<Paquete> listaPaquetes = (List) miSession.getAttribute("listaPaquetes");
                     for (Paquete paquete : listaPaquetes) {
                 %>  
@@ -40,7 +40,7 @@
                     <td>
                         <table>
                             <%List<ServicioTuristico> servicios = paquete.getListaServiciosIncluidos();
-                                for (ServicioTuristico ser : servicios) {
+                             for (ServicioTuristico ser : servicios) {
                             %>
                             <tr>
                                 <td>

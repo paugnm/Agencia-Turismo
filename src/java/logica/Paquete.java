@@ -54,6 +54,9 @@ public class Paquete implements Serializable {
 
     public void setListaServiciosIncluidos(List<ServicioTuristico> listaServiciosIncluidos) {
         this.listaServiciosIncluidos = listaServiciosIncluidos;
+        
+        //Cada vez que seteo una lista calculo nuevamente el costo
+        this.costo = this.calcularCosto();
     }
     
     public double calcularCosto() {
@@ -64,6 +67,19 @@ public class Paquete implements Serializable {
         return costo -= costo*0.1;
     }
     
+    public String isChecked(int codServicio){
+        String checked="";
+        
+        for (ServicioTuristico serv : listaServiciosIncluidos){
+            if(serv.getCodigo() == codServicio) {
+                checked = "checked";
+                return checked;
+            }        
+        }
+        
+        return checked;
+        
+    }
     
     
 }
