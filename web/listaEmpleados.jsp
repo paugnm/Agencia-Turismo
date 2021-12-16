@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- CSS only -->
@@ -12,7 +12,7 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-        <title>Lista de servicios</title>
+        <title>Lista de empleados</title>
     </head>
     <body>
 
@@ -29,8 +29,9 @@
                     <th scope="col">Email</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Sueldo</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col">Eliminar</th>
-                    <th scope="col">Modificar</th>
+                    <th scope="col">Modificar</th>                    
                 </tr>
             </thead>
             <tbody>
@@ -72,6 +73,14 @@
                     
                      <%double sueldo = emple.getSueldo();%>
                     <td><%=sueldo%></td>
+                    
+                    <%int idUsuario = emple.getUsuario().getId();%>
+                    <td>
+                        <form name="frmUsuario"  action="SvConsultarUsuario" method="GET">
+                            <input type="hidden" name="idUsuario" value="<%=idUsuario%>">
+                            <button type="submit" class="btn btn-danger">Ver usuario</button>
+                        </form>
+                    </td>
                     
                     <%int id = emple.getId();%>
                     <td>

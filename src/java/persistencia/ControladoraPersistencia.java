@@ -7,6 +7,8 @@ import logica.Cliente;
 import logica.Empleado;
 import logica.Paquete;
 import logica.ServicioTuristico;
+import logica.Usuario;
+import logica.Venta;
 import persistencia.exceptions.NonexistentEntityException;
 
 public class ControladoraPersistencia {
@@ -15,6 +17,8 @@ public class ControladoraPersistencia {
     EmpleadoJpaController empleadoJPA = new EmpleadoJpaController();
     ClienteJpaController clienteJPA = new ClienteJpaController();
     PaqueteJpaController paqueteJPA = new PaqueteJpaController();
+    UsuarioJpaController usuJPA = new UsuarioJpaController();
+    VentaJpaController ventaJPA = new VentaJpaController();
     
     
     /*--------------------------------------Controladora de Servicios----------------------------------------*/
@@ -229,5 +233,113 @@ public class ControladoraPersistencia {
     public Paquete buscarPaquete(int codigo) {
         return paqueteJPA.findPaquete(codigo);
     }
+    
+
+    /*--------------------------------------Controladora de Usuario----------------------------------------*/
+    
+    public void crearUsuario(Usuario usu) {
+        try {
+            usuJPA.create(usu);
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el usuario");
+        }                     
+    }
+    
+    //Eliminar un usuario pasando el objeto como párametro
+    public void eliminarUsuario(Usuario usu) {
+        try {
+            usuJPA.destroy(usu.getId());
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     //Eliminar un usuario pasando el id
+    public void eliminarUsuario(int id) {
+        try {
+            usuJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    //Método para lectura
+    public List<Usuario> obtenerUsuarios() {
+        return usuJPA.findUsuarioEntities();
+    }
+    
+    //Método para modificar 
+    public void modificarUsuario(Usuario usu) {
+        try {
+            usuJPA.edit(usu);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    
+    //Método para búsqueda pasando el objeto completo
+    public Usuario buscarUsuario(Usuario usu) {
+        return usuJPA.findUsuario(usu.getId());
+    }
+    
+    //Método para búsqueda pasando el codigo de servicio
+    public Usuario buscarUsuario(int codigo) {
+        return usuJPA.findUsuario(codigo);
+    }
+    
+     /*--------------------------------------Controladora de Ventas----------------------------------------*/
+    
+    public void crearVenta(Venta venta) {
+        try {
+            ventaJPA.create(venta);
+        } catch (Exception e) {
+            System.out.println("No se pudo crear la venta");
+        }                     
+    }
+    
+    //Eliminar venta pasando el objeto como párametro
+    public void eliminarVenta(Venta venta) {
+        try {
+            ventaJPA.destroy(venta.getNumVenta());
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     //Eliminar una venta pasando el numero de venta como parámetro
+    public void eliminarVenta(int num) {
+        try {
+            ventaJPA.destroy(num);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    //Método para lectura
+    public List<Venta> obtenerVentas() {
+        return ventaJPA.findVentaEntities();
+    }
+    
+    //Método para modificar 
+    public void modificarVenta(Venta venta) {
+        try {
+            ventaJPA.edit(venta);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    
+    //Método para búsqueda pasando el objeto completo
+    public Venta buscarVenta(Venta venta) {
+        return ventaJPA.findVenta(venta.getNumVenta());
+    }
+    
+    //Método para búsqueda pasando el codigo de servicio
+    public Venta buscarVenta(int venta) {
+        return ventaJPA.findVenta(venta);
+    }
+    
      
 }

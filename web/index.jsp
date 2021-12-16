@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
 	<title>Agencia de turismo</title>
@@ -41,7 +41,7 @@
 						UP</a><br />
 					and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
 				<ul class="actions">
-					<li><a href="#one" class="button scrolly">Learn more</a></li>
+					<li><a href="login.jsp" class="button scrolly">Login</a></li>
 				</ul>
 			</div>
 		</section>
@@ -215,8 +215,10 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="generic.html" class="button">Nueva venta</a></li>
-						</ul>
+                                                    <form action="SvVenta" method="GET">
+							<li><a href="SvVenta" class="button">Nueva venta</a></li>
+                                                    </form>    
+                                                </ul>
 					</section>
 					<section>
 						<span class="icon solid major fa-lock"></span>
@@ -242,8 +244,10 @@
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
-							<li><a href="generic.html" class="button">Consultar</a></li>
-						</ul>
+                                                    <form action="SvConsultarVentas" method="GET">
+							<li><a href="SvConsultarVentas" class="button">Consultar ventas</a></li>
+                                                    </form>    
+                                                </ul>
 					</section>
 				</div>
 			</div>

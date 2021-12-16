@@ -1,4 +1,4 @@
-<%@page import="logica.ServicioTuristico"%>
+<%@page import="logica.Venta"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="logica.Paquete"%>
@@ -19,40 +19,53 @@
     <body>
 
         <table class="table table-striped">
-            <thead>
-                <!-- tr: table row, th: table header, td: table data-->
                 <tr>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Servicios Incluidos</th>
-                    <th scope="col">Costo</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Medio de pago</th>
+                    <th scope="col">Empleado</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Código servicio</th>
+                    <th scope="col">Código de paquete</th>
                 </tr>
             </thead>
 
             <tbody>                
                 <%  HttpSession miSession = request.getSession();
-                    List<Paquete> listaPaquetes = (List) miSession.getAttribute("listaPaquetes");
-                    for (Paquete paquete : listaPaquetes) {
+                    List<Venta> listaVentas = (List) miSession.getAttribute("listaVentas");
+                    for (Venta vent : listaVentas) {
                 %>  
 
                 <tr>   
-                    <%int codigo = paquete.getCodigo();%>
-                    <td><%=codigo%> </td>      
-                    <td>
-                        <table>
-                            <%List<ServicioTuristico> servicios = paquete.getListaServiciosIncluidos();
-                             for (ServicioTuristico ser : servicios) {
-                            %>
-                            <tr>
-                                <td>
-                                    <%=ser.getDescripcion()%>
-                                    <%}%> 
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td><%=paquete.getCosto()%></td>
+                    <%int codigo = vent.getNumVenta();%>
+                    <td><%=codigo%> </td>   
+                    
+                     <%
+                        DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+                        String fecha = formato.format(vent.getFechaVenta());%>
+                    <td><%=fecha%></td>
+          
+                    <%String medioPago = vent.getMedioDePago();%>
+                    <td><%=medioPago%> </td> 
 
+                    <%String apeEmple = vent.getVendedor().getApellido();%>
+                    <%String nombreEmple = vent.getVendedor().getNombre();%>
+                    <td><%=nombreEmple%> <%=apeEmple%></td> 
 
+                    <%String nombreCliente = vent.getComprador().getNombre(); String apeCliente = vent.getComprador().getApellido();%>
+                    <td><%=nombreCliente%> <%=apeCliente%></td> 
+                    
+                    <%if (vent.getServicio()!= null) {%>
+                        <td><%=vent.getServicio().getCodigo()%></td> 
+                    <%} else {%>
+                    <td>-</td>
+                    <%}%>
+                    <%if (vent.getPaquete()!= null) {%>
+                    <td><%=vent.getPaquete().getCodigo()%></td> 
+                    <%} else {%>
+                    <td>-</td>
+                    <%}%>
+                    
                     <td>
                         <form name="frmBorrarPaquete"  action="SvEliminarPaquete" method="post">
                             <input type="hidden" name="codigo" value="<%=codigo%>">
@@ -74,3 +87,4 @@
         <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>    
     </body>
 </html>
+

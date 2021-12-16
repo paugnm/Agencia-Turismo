@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- CSS only -->
@@ -30,6 +30,14 @@
             <div class="col-md-6">
                 <label for=apellidoEmple"" class="form-label">Apellido</label>
                 <input type="text" class="form-control" id="apellidoEmple" name="apellidoEmple">
+            </div>
+            <div class="col-md-6">
+                <label for=usuario"" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="usuario">
+            </div>
+            <div class="col-md-6">
+                <label for=contrasenia"" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="contrasenia" name="contrasenia">
             </div>
             <div class="col-md-6">
                 <label for="direccion" class="form-label">Direccion</label>

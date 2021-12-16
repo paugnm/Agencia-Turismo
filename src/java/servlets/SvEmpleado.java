@@ -38,12 +38,14 @@ public class SvEmpleado extends HttpServlet {
             String direccion = request.getParameter("direccion");
             int dni = Integer.parseInt(request.getParameter("dni"));
             String nacionalidad = request.getParameter("nacionalidad");
-            int celular = Integer.parseInt(request.getParameter("celular"));
+            int celular = Integer.valueOf(request.getParameter("celular"));
             String email = request.getParameter("email");
             String cargo = request.getParameter("cargo");
             double sueldo = Double.parseDouble(request.getParameter("sueldo"));
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fechaNac = formato.parse(request.getParameter("fechaNac"));
+            String nombreUsu = request.getParameter("usuario");
+            String pass = request.getParameter("contrasenia");
             
             request.getSession().setAttribute("nombreEmple", nombre);
             request.getSession().setAttribute("apellidoEmple", apellido);
@@ -55,14 +57,16 @@ public class SvEmpleado extends HttpServlet {
             request.getSession().setAttribute("cargo", cargo);
             request.getSession().setAttribute("fechaNacimiento", fechaNac);
             request.getSession().setAttribute("sueldo", sueldo);
+            request.getSession().setAttribute("usuario", nombreUsu);
+            request.getSession().setAttribute("pass", pass);
             
-            control.crearEmpleado(cargo, sueldo, nombre, apellido, dni, direccion, fechaNac, nacionalidad, email, celular);
+            control.crearEmpleado(cargo, sueldo, nombre, apellido, dni, direccion, fechaNac, nacionalidad, email, celular, nombreUsu, pass);
             response.sendRedirect("formularioEmpleado.jsp");
             
         } catch (ParseException ex) {
             Logger.getLogger(SvEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+
             
     }
 
