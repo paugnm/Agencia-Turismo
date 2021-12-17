@@ -53,12 +53,25 @@ public class SvVenta extends HttpServlet {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = formato.parse(request.getParameter("fecha"));
             int id = Integer.parseInt(request.getParameter("idCliente"));
+    
             
             Cliente cliente = control.buscarCliente(id);
             Empleado emple = control.buscarEmpleado(Integer.valueOf(request.getParameter("empleado")));
-            ServicioTuristico servi = control.buscarServicio(Integer.valueOf(request.getParameter("servicio")));
-            Paquete paquete = control.buscarPaquete(Integer.valueOf(request.getParameter("paquete")));
-           
+            
+            ServicioTuristico servi; 
+            try{
+                servi = control.buscarServicio(Integer.valueOf(request.getParameter("servicio")));
+            } catch (Exception e){
+                servi = null;
+            }
+            
+            Paquete paquete; 
+             try{
+                paquete = control.buscarPaquete(Integer.valueOf(request.getParameter("paquete")));
+            } catch (Exception e){
+                paquete = null;
+            }         
+            
             
             control.crearVenta(medioPago, fecha, cliente, servi, paquete, emple);
             response.sendRedirect("formularioVentas.jsp");

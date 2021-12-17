@@ -30,20 +30,20 @@
     </head>
     <body>
         <%HttpSession miSession = request.getSession();
-          String usu = (String) miSession.getAttribute("user");
-          if (usu==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usu = (String) miSession.getAttribute("user");
+            if (usu == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
         <h1>Nueva venta</h1>
         <%
-           List<Empleado> listaEmpleados = (List) miSession.getAttribute("empleados");
-           List<Cliente> listaClientes = (List) miSession.getAttribute("clientes");
-           List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("servicios");
-           List<Paquete> listaPaquetes = (List) miSession.getAttribute("paquetes");
-           System.out.println(listaServicios.size());
+            List<Empleado> listaEmpleados = (List) miSession.getAttribute("empleados");
+            List<Cliente> listaClientes = (List) miSession.getAttribute("clientes");
+            List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("servicios");
+            List<Paquete> listaPaquetes = (List) miSession.getAttribute("paquetes");
+            System.out.println(listaServicios.size());
         %>
-        
+
         <form class="row g-3" action="SvVenta" method="POST">
             <div class="col-12">
                 <label for="fechaVenta" class="form-label">Fecha</label>
@@ -61,39 +61,68 @@
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="idCliente">
                     <option selected>Cliente</option>
-                    <%for (Cliente cli : listaClientes) { %>
-                            <option value="<%=cli.getId()%>"><%=cli.getNombre()%> <%=cli.getApellido()%></option>
+                    <%for (Cliente cli : listaClientes) {%>
+                    <option value="<%=cli.getId()%>"><%=cli.getNombre()%> <%=cli.getApellido()%></option>
                     <%}%>
                 </select>
             </div>
-            
+
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="empleado">
                     <option selected>Empleado a cargo de la venta</option>
-                    <%for (Empleado emple : listaEmpleados) { %>
+                    <%for (Empleado emple : listaEmpleados) {%>
                     <option value="<%=emple.getId()%>"><%=emple.getNombre()%> <%=emple.getApellido()%></option>
                     <%}%>
                 </select>
-            </div>     
-                
-           <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="paquete">
-                    <option selected>Paquetes disponibles</option>
-                    <%for (Paquete paque : listaPaquetes) { %>
-                    <option value="<%=paque.getCodigo()%>"><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
-                    <%}%>
-                </select>
-            </div>       
-                
-            <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="servicio">
-                    <option selected>Servcios disponibles</option>
-                    <%for (ServicioTuristico ser : listaServicios) { %>
-                    <option value="<%=ser.getCodigo()%>"><%=ser.getCodigo()%></option>
-                    <%}%>
-                </select>
             </div>
-                 
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnPaquete" onclick="display()">
+                <label class="form-check-label" for="btnPaquete">
+                    Paquete
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnServicio" onclick="display()">
+                <label class="form-check-label" for="btnServicio">
+                    Servicio
+                </label>
+            </div>
+
+
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete">
+                    <option selected>Paquetes disponibles</option>
+                    <%for (Paquete paque : listaPaquetes) {%>
+                    <option value="<%=paque.getCodigo()%>" ><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
+                    <%}%>
+                </select>
+            </div>      
+
+
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio">
+                    <option selected>Servcios disponibles</option>
+                    <%for (ServicioTuristico ser : listaServicios) {%>
+                    <option value="<%=ser.getCodigo()%>" > <%=ser.getCodigo()%> </option>
+                    <%}%>
+                </select>
+            </div>   
+                
+                <script>
+                    function display(){
+                        if (document.getElementById("btnPaquete").checked) {
+                            document.getElementById("selectPaquete").disabled=false;
+                            document.getElementById("selectServicio").disable = true;
+                            document.getElementById("selectPaquete").value = null;
+                        } else {
+                            document.getElementById("selectServicio").disable = false;
+                            document.getElementById("selectPaquete").disable = true;
+                            document.getElementById("selectServicio").value = null;
+                        }
+                    }                    
+                </script>    
+                
 
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Enviar</button>
