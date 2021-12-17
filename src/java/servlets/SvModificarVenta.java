@@ -37,21 +37,33 @@ public class SvModificarVenta extends HttpServlet {
             throws ServletException, IOException {
        try {
             int empleId = Integer.parseInt(request.getParameter("empleado"));
-            int paqueId = Integer.parseInt(request.getParameter("paquete"));
-            int servicio = Integer.parseInt(request.getParameter("servicio"));
             String medioPago = request.getParameter("medioDePago");
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = formato.parse(request.getParameter("fecha"));
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            
+            ServicioTuristico servicio;
+            try{
+                servicio = control.buscarServicio(Integer.valueOf(request.getParameter("servicio")));
+            } catch (Exception e){
+                servicio = null;
+            }
+            
+            Paquete paquete; 
+             try{
+                paquete = control.buscarPaquete(Integer.valueOf(request.getParameter("paquete")));
+            } catch (Exception e){
+                paquete = null;
+            }         
             
             Cliente cliente = control.buscarCliente(idCliente);
             
             Venta venta = control.buscarVenta(Integer.parseInt(request.getParameter("codigo")));
   
             venta.setFechaVenta(fecha);
-            venta.setServicio(control.buscarServicio(servicio));
+            venta.setServicio(servicio);
             venta.setMedioDePago(medioPago);
-            venta.setPaquete(control.buscarPaquete(paqueId));
+            venta.setPaquete(paquete);
             venta.setVendedor(control.buscarEmpleado(empleId));
             venta.setComprador(cliente);
             

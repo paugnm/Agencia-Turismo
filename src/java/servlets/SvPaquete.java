@@ -44,14 +44,16 @@ public class SvPaquete extends HttpServlet {
         List<ServicioTuristico> serviciosIncluidosPaquete = new ArrayList();
         
         String[] checked = request.getParameterValues("selected");
+       
+        //SOLO LE DOY ALTA AL PAQUETE SI INCLUYE AL MENOS DOS SERVICIOS
+        if (checked.length>=2) {
+             for (int i=0; i<checked.length; i++)
+             {
+                serviciosIncluidosPaquete.add(control.buscarServicio(Integer.parseInt(checked[i])));
+             }
         
-        for (int i=0; i<checked.length; i++)
-        {
-            serviciosIncluidosPaquete.add(control.buscarServicio(Integer.parseInt(checked[i])));
+            control.crearPaquete(serviciosIncluidosPaquete);
         }
-        
-        control.crearPaquete(serviciosIncluidosPaquete);
-        
         response.sendRedirect("formularioPaquete.jsp");
     }
 

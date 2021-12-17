@@ -36,14 +36,14 @@
     </head>
     <body>
         <%HttpSession miSession = request.getSession();
-          String usu = (String) miSession.getAttribute("user");
-          if (usu==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usu = (String) miSession.getAttribute("user");
+            if (usu == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
         <h1>Modificar venta</h1>
 
-        <% 
+        <%
             Venta venta = (Venta) miSession.getAttribute("venta");
             List<Empleado> listaEmpleados = (List) miSession.getAttribute("listaEmpleados");
             List<Cliente> listaClientes = (List) miSession.getAttribute("listaClientes");
@@ -90,9 +90,26 @@
                 </select>
             </div>     
 
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnPaquete" onclick="display()">
+                <label class="form-check-label" for="btnPaquete">
+                    Paquete
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnServicio" onclick="display()">
+                <label class="form-check-label" for="btnServicio">
+                    Servicio
+                </label>
+            </div>    
+
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="paquete">
+                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">
+                    <%if(venta.getPaquete()!=null) {%>
                     <option selected><%=venta.getPaquete().getCodigo()%></option>
+                    <% } else {%>
+                    <option selected>Paquetes disponibles</option>
+                    <%}%>
                     <%for (Paquete paque : listaPaquetes) {%>
                     <option value="<%=paque.getCodigo()%>"><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
                     <%}%>
@@ -100,15 +117,33 @@
             </div>       
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="servicio">
+                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" disabled="disabled">
+                    <%if(venta.getServicio()!=null) {%>
                     <option selected><%=venta.getServicio().getCodigo()%></option>
+                    <% } else {%>
+                    <option selected>Servicios disponibles</option>
+                    <%}%>
                     <%for (ServicioTuristico ser : listaServicios) {%>
                     <option value="<%=ser.getCodigo()%>"><%=ser.getCodigo()%></option>
                     <%}%>
                 </select>
             </div>
+                
+            <script>
+                function display() {
+                    if (document.getElementById("btnPaquete").checked) {
+                        document.getElementById("selectPaquete").disabled = false;
+                        document.getElementById("selectServicio").disabled = true;
+                        document.getElementById("selectServicio").value = null;
+                    } else {
+                        document.getElementById("selectServicio").disabled = false;
+                        document.getElementById("selectPaquete").disabled = true;
+                        document.getElementById("selectPaquete").value = null;
+                    }
+                }
+            </script>    
 
-           <input type="hidden" value="<%=venta.getNumVenta()%>" name="codigo">
+            <input type="hidden" value="<%=venta.getNumVenta()%>" name="codigo">
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>

@@ -76,6 +76,8 @@
                 </select>
             </div>
 
+
+
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnPaquete" onclick="display()">
                 <label class="form-check-label" for="btnPaquete">
@@ -91,40 +93,41 @@
 
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" onchange="display()">
+                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">
                     <option selected>Paquetes disponibles</option>
                     <%for (Paquete paque : listaPaquetes) {%>
                     <option value="<%=paque.getCodigo()%>" ><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
                     <%}%>
                 </select>
-            </div>      
+            </div>   
 
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" onchange="display()">
-                    <option selected>Servcios disponibles</option>
+                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" disabled="disabled">
+                    <option selected>Servicios disponibles</option>
                     <%for (ServicioTuristico ser : listaServicios) {%>
                     <option value="<%=ser.getCodigo()%>" > <%=ser.getCodigo()%> </option>
                     <%}%>
                 </select>
-            </div>   
-                
-                <script>
-                    function display(){
-                        if (document.getElementById("btnPaquete").checked) {
-                            document.getElementById("selectPaquete").disabled=false;
-                            document.getElementById("selectServicio").disabled = true;
-                            document.getElementById("selectServicio").selectedIndex = 0;
-                            document.getElementById("selectSercicio").value = null;
-                        } else {
-                            document.getElementById("selectServicio").disabled = false;
-                            document.getElementById("selectPaquete").disabled = true;
-                            document.getElementById("selectPaquete").value = null;
-                            document.getElementById("selectPaquete").selectedIndex = 0;
-                        }
-                    }                    
-                </script>    
-                
+            </div>         
+
+            <script>
+                function display() {
+                    if (document.getElementById("btnPaquete").checked) {
+                        document.getElementById("selectPaquete").disabled = false;
+                        document.getElementById("selectServicio").disabled = true;
+                        document.getElementById("selectServicio").selectedIndex = 0;
+                        document.getElementById("selectSercicio").value = null;
+                    } else {
+                        document.getElementById("selectServicio").disabled = false;
+                        document.getElementById("selectPaquete").disabled = true;
+                        document.getElementById("selectPaquete").value = null;
+                        document.getElementById("selectPaquete").selectedIndex = 0;
+                    }
+                }
+            </script>   
+
+
 
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Enviar</button>
