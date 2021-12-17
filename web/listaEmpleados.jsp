@@ -2,7 +2,7 @@
 <%@page import="java.text.DateFormat"%>
 <%@page import="logica.Empleado"%>
 <%@page import="java.util.List"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

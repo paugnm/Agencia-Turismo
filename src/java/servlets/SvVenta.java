@@ -32,14 +32,15 @@ public class SvVenta extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Empleado> empleados = control.obtenerEmpleados();       
+        List<Empleado> empleados = control.obtenerEmpleados();   
+        List<Cliente> clientes = control.obtenerClientes();
         List<ServicioTuristico> servicios = control.obtenerServiciosTuristicos(); 
         List<Paquete> paquetes = control.obtenerPaquetes(); 
         HttpSession miSession = request.getSession();
         miSession.setAttribute("empleados", empleados);
         miSession.setAttribute("servicios", servicios);
         miSession.setAttribute("paquetes", paquetes);
-        
+        miSession.setAttribute("clientes", clientes);
         response.sendRedirect("formularioVentas.jsp");
     }
 
@@ -51,9 +52,9 @@ public class SvVenta extends HttpServlet {
             String medioPago = request.getParameter("medioDePago");
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = formato.parse(request.getParameter("fecha"));
-            int dniCliente = Integer.parseInt(request.getParameter("dniCliente"));
+            int id = Integer.parseInt(request.getParameter("idCliente"));
             
-            Cliente cliente = control.buscarClientePorDni(dniCliente);
+            Cliente cliente = control.buscarCliente(id);
             Empleado emple = control.buscarEmpleado(Integer.valueOf(request.getParameter("empleado")));
             ServicioTuristico servi = control.buscarServicio(Integer.valueOf(request.getParameter("servicio")));
             Paquete paquete = control.buscarPaquete(Integer.valueOf(request.getParameter("paquete")));

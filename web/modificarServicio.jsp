@@ -2,7 +2,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="logica.ServicioTuristico"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,7 +47,7 @@
           <input type="text" class="form-control" id="destino" name="destino" value="<%=servi.getDestino()%>">
         </div>
         <div class="col-6">
-          <label for="descripcionServicio" class="form-label">DescripciÃ³n</label>
+          <label for="descripcionServicio" class="form-label">Descripción</label>
           <input type="text" class="form-control" id="descripcionServicio" name="descripcion" value="<%=servi.getDescripcion()%>">
         </div>
         <div class="col-6">

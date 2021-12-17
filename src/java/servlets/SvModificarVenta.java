@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logica.Cliente;
 import logica.Controladora;
 import logica.Empleado;
 import logica.Paquete;
@@ -41,19 +42,18 @@ public class SvModificarVenta extends HttpServlet {
             String medioPago = request.getParameter("medioDePago");
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = formato.parse(request.getParameter("fecha"));
-            String dni = request.getParameter("dniCliente");
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            
+            Cliente cliente = control.buscarCliente(idCliente);
             
             Venta venta = control.buscarVenta(Integer.parseInt(request.getParameter("codigo")));
-            if(dni!=""){
-                
-                venta.setComprador(control.buscarClientePorDni(Integer.parseInt(dni)));
-            }
   
             venta.setFechaVenta(fecha);
             venta.setServicio(control.buscarServicio(servicio));
             venta.setMedioDePago(medioPago);
             venta.setPaquete(control.buscarPaquete(paqueId));
             venta.setVendedor(control.buscarEmpleado(empleId));
+            venta.setComprador(cliente);
             
             control.modificarVenta(venta);
             
@@ -78,6 +78,7 @@ public class SvModificarVenta extends HttpServlet {
         miSession.setAttribute("listaEmpleados", control.obtenerEmpleados());
         miSession.setAttribute("listaServicios", control.obtenerServiciosTuristicos());
         miSession.setAttribute("listaPaquetes", control.obtenerPaquetes());
+        miSession.setAttribute("listaClientes", control.obtenerClientes());
         response.sendRedirect("modificarVenta.jsp");
     }
 

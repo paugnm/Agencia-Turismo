@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -83,7 +82,7 @@
 					</section>
 					<section>
 						<span class="icon solid major fa-cog"></span>
-						<h3>Modificaci贸n</h3>
+						<h3>Modificaci髇</h3>
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
@@ -134,7 +133,7 @@
 					</section>
 					<section>
 						<span class="icon solid major fa-cog"></span>
-						<h3>Modificaci贸n</h3>
+						<h3>Modificaci髇</h3>
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
@@ -185,7 +184,7 @@
 					</section>
 					<section>
 						<span class="icon solid major fa-cog"></span>
-						<h3>Modificaci贸n</h3>
+						<h3>Modificaci髇</h3>
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
@@ -239,7 +238,7 @@
 					</section>
 					<section>
 						<span class="icon solid major fa-cog"></span>
-						<h3>Modificaci贸n</h3>
+						<h3>Modificaci髇</h3>
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">
@@ -292,7 +291,7 @@
 					</section>
 					<section>
 						<span class="icon solid major fa-cog"></span>
-						<h3>Modificaci贸n</h3>
+						<h3>Modificaci髇</h3>
 						<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
 							ultricies erat dapibus.</p>
 						<ul class="actions">

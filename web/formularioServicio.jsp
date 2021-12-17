@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,23 +30,32 @@
         %>
     <h1>Nuevo servicio</h1>
     <form class="row g-3" action="SvServicioTuristico" method="POST">
+   
         <div class="col-md-6">
-          <label for="nombreServicio" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombreServicio" name="nombreServicio">
+                <select class="form-select" aria-label="Default select example" name="nombreServicio">
+                    <option selected>Seleccione un servicio</option>
+                    <option value="Hotel por noche/s">Hotel por noche/s</option>
+                    <option value="Alquiler de auto">Alquiler de auto</option>
+                    <option value="Pasajes de colectivo">Pasajes de colectivo</option>
+                    <option value="Pasajes de avión">Pasajes de avión</option>
+                    <option value="Pasajes de tren">Pasajes de tren</option>
+                    <option value="Excursiones">Excursiones</option>
+                    <option value="Entradas a eventos">Entradas a eventos</option>
+                </select>
+                </select>
         </div>
         <div class="col-md-6">
-          <label for="destino" class="form-label">Destino</label>
-          <input type="text" class="form-control" id="destino" name="destino">
+          <input type="text" class="form-control" id="destino" name="destino" placeholder="Destino">
         </div>
         <div class="col-6">
-          <label for="descripcionServicio" class="form-label">DescripciÃ³n</label>
+          <label for="descripcionServicio" class="form-label">Descripción</label>
           <input type="text" class="form-control" id="descripcionServicio" name="descripcion">
         </div>
         <div class="col-6">
           <label for="costo" class="form-label">Costo $</label>
           <input type="text" class="form-control" id="costo" name="costo">
         </div>
-        <div class="col-12">
+        <div class="col-6">
           <label for="fechaServicio" class="form-label">Fecha</label>
           <input type="date" class="form-control" id="fechaServicio" name="fecha">
         </div>

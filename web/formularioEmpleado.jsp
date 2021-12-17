@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -42,7 +41,7 @@
                 <input type="text" class="form-control" id="usuario" name="usuario">
             </div>
             <div class="col-md-6">
-                <label for=contrasenia"" class="form-label">ContraseÃ±a</label>
+                <label for=contrasenia"" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="contrasenia" name="contrasenia">
             </div>
             <div class="col-md-6">

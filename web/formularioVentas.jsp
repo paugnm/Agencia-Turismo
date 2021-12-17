@@ -1,9 +1,10 @@
+<%@page import="logica.Cliente"%>
 <%@page import="logica.Paquete"%>
 <%@page import="logica.ServicioTuristico"%>
 <%@page import="logica.Empleado"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -37,6 +38,7 @@
         <h1>Nueva venta</h1>
         <%
            List<Empleado> listaEmpleados = (List) miSession.getAttribute("empleados");
+           List<Cliente> listaClientes = (List) miSession.getAttribute("clientes");
            List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("servicios");
            List<Paquete> listaPaquetes = (List) miSession.getAttribute("paquetes");
            System.out.println(listaServicios.size());
@@ -51,15 +53,19 @@
                 <select class="form-select" aria-label="Default select example" name="medioDePago">
                     <option selected>Seleccione una forma de pago</option>
                     <option value="Efectivo">Efectivo</option>
-                    <option value="Tarjeta de dÃ©bito">Tarjeta de dÃ©bito</option>
-                    <option value="Tarjeta de crÃ©dito">Tarjeta de crÃ©dito</option>
+                    <option value="Tarjeta de débito">Tarjeta de débito</option>
+                    <option value="Tarjeta de crédito">Tarjeta de crédito</option>
                 </select>
             </div>
-            <div class="col-md-6">
-                
-                <input type="text" class="form-control" placeholder="DNI del cliente" name="dniCliente">
+
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example" name="idCliente">
+                    <option selected>Cliente</option>
+                    <%for (Cliente cli : listaClientes) { %>
+                            <option value="<%=cli.getId()%>"><%=cli.getNombre()%> <%=cli.getApellido()%></option>
+                    <%}%>
+                </select>
             </div>
-            
             
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="empleado">

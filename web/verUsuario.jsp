@@ -1,5 +1,5 @@
 <%@page import="logica.Usuario"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -22,7 +22,7 @@
             <thead>
                 <tr>
                     <th scope="col">Nombre usuario</th>
-                    <th scope="col">ContraseÃ±a</th>
+                    <th scope="col">Contraseña</th>
                     <th scope="col">Eliminar</th>
                     <th scope="col">Modificar</th>
                 </tr>

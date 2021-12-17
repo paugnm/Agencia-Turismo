@@ -3,7 +3,7 @@
 <%@page import="logica.ServicioTuristico"%>
 <%@page import="java.util.List"%>
 <%@page import="logica.Controladora"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -27,7 +27,7 @@
                 <!-- tr: table row, th: table header, td: table data-->
                 <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">DescripciÃ³n</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">Destino</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Costo</th>

@@ -4,7 +4,7 @@
 <%@page import="logica.Paquete"%>
 <%@page import="java.util.List"%>
 <%@page import="logica.Controladora"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -25,13 +25,13 @@
         %>
         <table class="table table-striped">
                 <tr>
-                    <th scope="col">NÃºmero</th>
+                    <th scope="col">Número</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Medio de pago</th>
                     <th scope="col">Empleado</th>
                     <th scope="col">Cliente</th>
-                    <th scope="col">CÃ³digo servicio</th>
-                    <th scope="col">CÃ³digo de paquete</th>
+                    <th scope="col">Código servicio</th>
+                    <th scope="col">Código de paquete</th>
                     <th scope="col">Eliminar</th>
                     <th scope="col">Modificar</th>
                 </tr>

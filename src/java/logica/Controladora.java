@@ -262,17 +262,6 @@ public class Controladora {
         this.altaVenta(venta);
     }    
 
-    public Cliente buscarClientePorDni(int dniCliente) {
-        //SUPUESTO: el cliente ya se encuentra registrado al momento de realizar la compra, por lo tanto este método no devuleve null
-        List<Cliente> listaClientes = this.obtenerClientes();
-        Cliente clienteBuscado=null;
-        for (Cliente cli : listaClientes) {
-            if(cli.getDni()==dniCliente) {
-                return clienteBuscado = cli;
-            }
-        }
-        return clienteBuscado;        
-    }
 
     public void crearVenta(String medioPago, Date fecha, Cliente cliente, ServicioTuristico servi, Paquete paquete, Empleado vendedor) {
         Venta venta = new Venta();

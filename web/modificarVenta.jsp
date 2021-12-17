@@ -1,3 +1,4 @@
+<%@page import="logica.Cliente"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -9,7 +10,7 @@
 <%@page import="logica.Empleado"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -45,6 +46,7 @@
         <% 
             Venta venta = (Venta) miSession.getAttribute("venta");
             List<Empleado> listaEmpleados = (List) miSession.getAttribute("listaEmpleados");
+            List<Cliente> listaClientes = (List) miSession.getAttribute("listaClientes");
             List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
             List<Paquete> listaPaquetes = (List) miSession.getAttribute("listaPaquetes");
         %>
@@ -65,13 +67,17 @@
                 <select class="form-select" aria-label="Default select example" name="medioDePago">
                     <option selected><%=venta.getMedioDePago()%></option>
                     <option value="Efectivo">Efectivo</option>
-                    <option value="Tarjeta de dÃ©bito">Tarjeta de dÃ©bito</option>
-                    <option value="Tarjeta de crÃ©dito">Tarjeta de crÃ©dito</option>
+                    <option value="Tarjeta de débito">Tarjeta de débito</option>
+                    <option value="Tarjeta de crédito">Tarjeta de crédito</option>
                 </select>
             </div>
-            <div class="col-md-6">
-
-                <input type="text" class="form-control" placeholder=<%=venta.getComprador().getDni()%> name="dniCliente">
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example" name="idCliente">
+                    <option value="<%=venta.getComprador().getId()%>"><%=venta.getComprador().getNombre()%> <%=venta.getComprador().getApellido()%></option>
+                    <%for (Cliente cli : listaClientes) {%>
+                    <option value="<%=cli.getId()%>"><%=cli.getNombre()%> <%=cli.getApellido()%></option>
+                    <%}%>
+                </select>
             </div>
 
 

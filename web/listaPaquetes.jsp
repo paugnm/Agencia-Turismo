@@ -4,7 +4,7 @@
 <%@page import="logica.Paquete"%>
 <%@page import="java.util.List"%>
 <%@page import="logica.Controladora"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>

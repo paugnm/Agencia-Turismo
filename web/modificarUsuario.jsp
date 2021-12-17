@@ -1,6 +1,6 @@
 <%@page import="logica.Usuario"%>
 <%@page import="logica.Empleado"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -38,7 +38,7 @@
                 <input type="text" class="form-control" id="nombre" name="nombre" value="<%=usuario.getNombreUsu()%>">
             </div>
             <div class="col-md-6">
-                <label for=contrasenia"" class="form-label">ContraseÃ±a</label>
+                <label for=contrasenia"" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="contrasenia" name="contrasenia" value="<%=usuario.getContrasenia()%>">
             </div> 
             <input type="hidden" value="<%=usuario.getId()%>" name="id">
