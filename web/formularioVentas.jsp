@@ -91,7 +91,7 @@
 
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete">
+                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" onchange="display()">
                     <option selected>Paquetes disponibles</option>
                     <%for (Paquete paque : listaPaquetes) {%>
                     <option value="<%=paque.getCodigo()%>" ><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
@@ -101,7 +101,7 @@
 
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio">
+                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" onchange="display()">
                     <option selected>Servcios disponibles</option>
                     <%for (ServicioTuristico ser : listaServicios) {%>
                     <option value="<%=ser.getCodigo()%>" > <%=ser.getCodigo()%> </option>
@@ -113,12 +113,14 @@
                     function display(){
                         if (document.getElementById("btnPaquete").checked) {
                             document.getElementById("selectPaquete").disabled=false;
-                            document.getElementById("selectServicio").disable = true;
-                            document.getElementById("selectPaquete").value = null;
+                            document.getElementById("selectServicio").disabled = true;
+                            document.getElementById("selectServicio").selectedIndex = 0;
+                            document.getElementById("selectSercicio").value = null;
                         } else {
-                            document.getElementById("selectServicio").disable = false;
-                            document.getElementById("selectPaquete").disable = true;
-                            document.getElementById("selectServicio").value = null;
+                            document.getElementById("selectServicio").disabled = false;
+                            document.getElementById("selectPaquete").disabled = true;
+                            document.getElementById("selectPaquete").value = null;
+                            document.getElementById("selectPaquete").selectedIndex = 0;
                         }
                     }                    
                 </script>    
