@@ -13,6 +13,12 @@
 </head>
 
 <body class="is-preload">
+        <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else { 
+        %>
 
 	<!-- Sidebar -->
 	<section id="sidebar">
@@ -41,7 +47,9 @@
 						UP</a><br />
 					and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
 				<ul class="actions">
-					<li><a href="login.jsp" class="button scrolly">Login</a></li>
+                                    <form action="SvLogout" method="get">
+					<li><a href="SvLogout" class="button scrolly">Logout</a></li>
+                                    </form>    
 				</ul>
 			</div>
 		</section>
@@ -317,7 +325,7 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-
+        <%}%>
 </body>
 
 </html>

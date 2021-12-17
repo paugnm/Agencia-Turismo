@@ -15,6 +15,12 @@
         <title>Lista de empleados</title>
     </head>
     <body>
+        <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
 
         <table class="table table-striped">
             <thead>
@@ -36,7 +42,7 @@
             </thead>
             <tbody>
                 
-                <%     HttpSession miSession = request.getSession();
+                <%   
                        List<Empleado> listaEmpleados = (List) miSession.getAttribute("listaEmpleados");
                        for (Empleado emple : listaEmpleados) { 
                 %>  
@@ -102,5 +108,6 @@
         </table>
 
         <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>    
+        <%}%>
     </body>
 </html>

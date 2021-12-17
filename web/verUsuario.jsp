@@ -12,18 +12,24 @@
 
     </head>
     <body>
+        <%HttpSession miSession = request.getSession();
+          String usua = (String) miSession.getAttribute("user");
+          if (usua==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Nombre usuario</th>
                     <th scope="col">Contraseña</th>
+                    <th scope="col">Eliminar</th>
                     <th scope="col">Modificar</th>
-                    <th scope="col">Borrar</th>
                 </tr>
             </thead>
             <tbody>
 
-                <%  HttpSession miSession = request.getSession();
+                <%  
                     Usuario usu = (Usuario) miSession.getAttribute("usuario");
                 %>  
 
@@ -36,14 +42,14 @@
 
                     <%int id = usu.getId();%>
                     <td>
-                        <form name="frmBorrarCliente"  action="SvEliminarCliente" method="POST">
+                        <form name="frmBorrarUsuario"  action="SvEliminarUsuario" method="POST">
                             <input type="hidden" name="id" value="<%=id%>">
                             <button type="submit" class="btn btn-danger">Borrar</button>
                         </form>
                     </td>
 
                     <td>
-                        <form name="frmModificarCliente"  action="SvModificarCliente" method="POST">
+                        <form name="frmModificarUsuario"  action="SvModificarUsuario" method="POST">
                             <input type="hidden" name="id" value="<%=id%>">
                             <button type="submit" class="btn btn-primary">Modificar</button>
                         </form>
@@ -53,5 +59,6 @@
         </table>
 
         <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>
+        <%}%>
     </body>
 </html>

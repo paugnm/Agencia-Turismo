@@ -1,18 +1,14 @@
-<%@page import="java.util.List"%>
-<%@page import="logica.ServicioTuristico"%>
+<%@page import="logica.Usuario"%>
+<%@page import="logica.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>        
-
-        <title>Paquete</title>
         <style>
             body {
                 margin-top: 5%;
@@ -23,7 +19,9 @@
                 padding-bottom: 20px;
             }
         </style>
+        <title>Modificar usuario</title>
     </head>
+    
     <body>
         <%HttpSession miSession = request.getSession();
           String usu = (String) miSession.getAttribute("user");
@@ -31,23 +29,22 @@
               response.sendRedirect("login.jsp");
           } else {
         %>
-        <h1>Nuevo paquete</h1>
-        
-        <%     List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
-               for (ServicioTuristico serv : listaServicios) {
-        %> 
-        
-        <form class="row g-3" action="SvPaquete" method="POST">
-
-            <div class="col-md-12 form-check">
-                <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected">
-                <label class="form-check-label" for="servicio"><%=serv.getNombre()%> - <%=serv.getDescripcion()%></label>
+        <h1>Modificar usuario</h1>
+        <% 
+        Usuario usuario = (Usuario) miSession.getAttribute("usuario");%>
+        <form class="row g-3" action="SvModificarUsuario" method="GET">
+            <div class="col-md-6">
+                <label for=nombre"" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="<%=usuario.getNombreUsu()%>">
             </div>
-            <%}%>     
+            <div class="col-md-6">
+                <label for=contrasenia"" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="contrasenia" name="contrasenia" value="<%=usuario.getContrasenia()%>">
+            </div> 
+            <input type="hidden" value="<%=usuario.getId()%>" name="id">
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
-             
         </form>
         <%}%>    
     </body>

@@ -27,9 +27,15 @@
         </style>
     </head>
     <body>
+        <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
         <h1>Modificar paquete</h1>
 
-        <%     HttpSession miSession = request.getSession();
+        <%   
                Paquete paquete = (Paquete) miSession.getAttribute("paquete");
                List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
                for (ServicioTuristico serv : listaServicios) {
@@ -48,5 +54,6 @@
             </div>
             
         </form>
+        <%}%>    
     </body>
 </html>

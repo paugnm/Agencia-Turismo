@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
 import logica.Cliente;
-import logica.Empleado;
+
 
 @WebServlet(name = "SvModificarCliente", urlPatterns = {"/SvModificarCliente"})
 public class SvModificarCliente extends HttpServlet {

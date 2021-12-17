@@ -25,10 +25,16 @@
     </style>
 </head>
 <body>
+    <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
     <h1>Modificar servicio</h1>
     <form class="row g-3" action="SvModificarServicio" method="get">
         
-        <% HttpSession miSession = request.getSession();
+        <% 
            ServicioTuristico servi = (ServicioTuristico) miSession.getAttribute("servicio");
         {%>
         
@@ -68,5 +74,6 @@
       </form>
     
       <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>
+      <%}%>
 </body>
 </html>

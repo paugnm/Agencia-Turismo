@@ -17,7 +17,12 @@
         <title>Lista de paquetes</title>
     </head>
     <body>
-
+        <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
         <table class="table table-striped">
             <thead>
                 <!-- tr: table row, th: table header, td: table data-->
@@ -29,7 +34,7 @@
             </thead>
 
             <tbody>                
-                <%  HttpSession miSession = request.getSession();
+                <% 
                     List<Paquete> listaPaquetes = (List) miSession.getAttribute("listaPaquetes");
                     for (Paquete paquete : listaPaquetes) {
                 %>  
@@ -72,5 +77,6 @@
         </table>
 
         <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>    
+        <%}%>
     </body>
 </html>

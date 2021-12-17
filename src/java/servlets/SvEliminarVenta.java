@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
-import logica.Empleado;
-import logica.Venta;
 
-@WebServlet(name = "SvEliminarEmpleado", urlPatterns = {"/SvEliminarEmpleado"})
-public class SvEliminarEmpleado extends HttpServlet {
-
+@WebServlet(name = "SvEliminarVenta", urlPatterns = {"/SvEliminarVenta"})
+public class SvEliminarVenta extends HttpServlet {
+    
     Controladora control = new Controladora();
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     @Override
@@ -30,27 +29,18 @@ public class SvEliminarEmpleado extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int id = Integer.parseInt(request.getParameter("id"));
-
-        List<Venta> listaVentas = control.obtenerVentas();
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        control.bajaVenta(codigo);
         
-        for (Venta venta : listaVentas) {
-            if (venta.getVendedor().getId() == id) {
-                control.bajaVenta(venta);
-            }
-        }
-        control.bajaEmpleado(id);
         HttpSession miSession = request.getSession();
-        miSession.setAttribute("listaEmpleados", control.obtenerEmpleados());
         miSession.setAttribute("listaVentas", control.obtenerVentas());
-        response.sendRedirect("listaEmpleados.jsp");
-
+        
+        response.sendRedirect("listaVentas.jsp");
     }
 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

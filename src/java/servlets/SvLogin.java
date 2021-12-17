@@ -1,7 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,48 +9,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
-import logica.Empleado;
-import logica.Venta;
 
-@WebServlet(name = "SvEliminarEmpleado", urlPatterns = {"/SvEliminarEmpleado"})
-public class SvEliminarEmpleado extends HttpServlet {
-
+@WebServlet(name = "SvLogin", urlPatterns = {"/SvLogin"})
+public class SvLogin extends HttpServlet {
     Controladora control = new Controladora();
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int id = Integer.parseInt(request.getParameter("id"));
-
-        List<Venta> listaVentas = control.obtenerVentas();
+        String usuario = request.getParameter("user");
+        String contra = request.getParameter("pass");
         
-        for (Venta venta : listaVentas) {
-            if (venta.getVendedor().getId() == id) {
-                control.bajaVenta(venta);
-            }
+        boolean autorizado = control.verificarUsuario(usuario,contra);
+        
+        if (autorizado == true) {
+            HttpSession miSession = request.getSession(true);
+            miSession.setAttribute("user", usuario);
+            miSession.setAttribute("pass", contra);
+            
+            response.sendRedirect("index.jsp");
+        } else {
+            response.sendRedirect("login.jsp");
         }
-        control.bajaEmpleado(id);
-        HttpSession miSession = request.getSession();
-        miSession.setAttribute("listaEmpleados", control.obtenerEmpleados());
-        miSession.setAttribute("listaVentas", control.obtenerVentas());
-        response.sendRedirect("listaEmpleados.jsp");
-
     }
 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

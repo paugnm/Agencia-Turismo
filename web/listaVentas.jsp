@@ -17,7 +17,12 @@
         <title>Lista de paquetes</title>
     </head>
     <body>
-
+        <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
         <table class="table table-striped">
                 <tr>
                     <th scope="col">Número</th>
@@ -27,11 +32,13 @@
                     <th scope="col">Cliente</th>
                     <th scope="col">Código servicio</th>
                     <th scope="col">Código de paquete</th>
+                    <th scope="col">Eliminar</th>
+                    <th scope="col">Modificar</th>
                 </tr>
             </thead>
 
             <tbody>                
-                <%  HttpSession miSession = request.getSession();
+                <%  
                     List<Venta> listaVentas = (List) miSession.getAttribute("listaVentas");
                     for (Venta vent : listaVentas) {
                 %>  
@@ -67,14 +74,14 @@
                     <%}%>
                     
                     <td>
-                        <form name="frmBorrarPaquete"  action="SvEliminarPaquete" method="post">
+                        <form name="frmBorrarVenta"  action="SvEliminarVenta" method="post">
                             <input type="hidden" name="codigo" value="<%=codigo%>">
                             <button type="submit" class="btn btn-danger">Borrar</button>
                         </form>
                     </td>
 
                     <td>
-                        <form name="frmModificarPaquete"  action="SvModificarPaquete" method="post">
+                        <form name="frmModificarVenta"  action="SvModificarVenta" method="post">
                             <input type="hidden" name="codigo" value="<%=codigo%>">
                             <button type="submit" class="btn btn-primary">Modificar</button>
                         </form>
@@ -85,6 +92,7 @@
         </table>
 
         <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>    
+        <%}%>
     </body>
 </html>
 

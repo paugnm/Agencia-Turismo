@@ -25,9 +25,15 @@
     </head>
     
     <body>
+        <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
         <h1>Modificar Empleado</h1>
         
-        <% HttpSession miSession = request.getSession();
+        <% 
            Empleado emple = (Empleado) miSession.getAttribute("emple");
         {%>
         
@@ -87,6 +93,6 @@
             </div>
             <%}%> 
         </form>
-
+        <%}%>
     </body>
 </html>

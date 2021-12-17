@@ -10,15 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
 import logica.Empleado;
-import logica.Venta;
 
-@WebServlet(name = "SvEliminarEmpleado", urlPatterns = {"/SvEliminarEmpleado"})
-public class SvEliminarEmpleado extends HttpServlet {
 
+@WebServlet(name = "SvEliminarUsuario", urlPatterns = {"/SvEliminarUsuario"})
+public class SvEliminarUsuario extends HttpServlet {
     Controladora control = new Controladora();
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
     }
 
     @Override
@@ -30,27 +31,27 @@ public class SvEliminarEmpleado extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+       
         int id = Integer.parseInt(request.getParameter("id"));
-
-        List<Venta> listaVentas = control.obtenerVentas();
         
-        for (Venta venta : listaVentas) {
-            if (venta.getVendedor().getId() == id) {
-                control.bajaVenta(venta);
+        List<Empleado> listaEmpleados = control.obtenerEmpleados();
+        
+        for(Empleado emple : listaEmpleados) {
+            if (emple.getUsuario().getId()==id) {
+                control.bajaEmpleado(emple);
+                break;
             }
         }
-        control.bajaEmpleado(id);
-        HttpSession miSession = request.getSession();
-        miSession.setAttribute("listaEmpleados", control.obtenerEmpleados());
-        miSession.setAttribute("listaVentas", control.obtenerVentas());
+        control.bajaUsuario(id);
+        HttpSession miSession = request.getSession();        
+        miSession.setAttribute("listaUsuarios", control.obtenerUsuarios()); 
+        miSession.setAttribute("listaEmpleados", control.obtenerEmpleados()); 
         response.sendRedirect("listaEmpleados.jsp");
-
     }
 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

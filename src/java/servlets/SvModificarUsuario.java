@@ -1,7 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,48 +9,54 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
-import logica.Empleado;
-import logica.Venta;
+import logica.Usuario;
 
-@WebServlet(name = "SvEliminarEmpleado", urlPatterns = {"/SvEliminarEmpleado"})
-public class SvEliminarEmpleado extends HttpServlet {
 
+@WebServlet(name = "SvModificarUsuario", urlPatterns = {"/SvModificarUsuario"})
+public class SvModificarUsuario extends HttpServlet {
     Controladora control = new Controladora();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            
+            String nombre = request.getParameter("nombre");
+            String pass = request.getParameter("contrasenia");
+            int id = Integer.parseInt(request.getParameter("id"));
+            
+            Usuario usu = control.buscarUsuario(id);
+            usu.setNombreUsu(nombre);
+            usu.setContrasenia(pass);
+            control.modificarUsuario(usu);
+            
+            request.getSession().setAttribute("listaUsuarios", control.obtenerUsuarios());
+            
+            response.sendRedirect("listaEmpleados.jsp");
+        
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         int id = Integer.parseInt(request.getParameter("id"));
-
-        List<Venta> listaVentas = control.obtenerVentas();
+        Usuario usu = control.buscarUsuario(id);
         
-        for (Venta venta : listaVentas) {
-            if (venta.getVendedor().getId() == id) {
-                control.bajaVenta(venta);
-            }
-        }
-        control.bajaEmpleado(id);
         HttpSession miSession = request.getSession();
-        miSession.setAttribute("listaEmpleados", control.obtenerEmpleados());
-        miSession.setAttribute("listaVentas", control.obtenerVentas());
-        response.sendRedirect("listaEmpleados.jsp");
-
+        miSession.setAttribute("usuario", usu);
+        response.sendRedirect("modificarUsuario.jsp");
+        
     }
+
 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

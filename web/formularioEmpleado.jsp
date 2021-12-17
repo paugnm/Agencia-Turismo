@@ -21,6 +21,12 @@
     </head>
     
     <body>
+        <%HttpSession miSession = request.getSession();
+          String usu = (String) miSession.getAttribute("user");
+          if (usu==null) {
+              response.sendRedirect("login.jsp");
+          } else {
+        %>
         <h1>Nuevo Empleado</h1>
         <form class="row g-3" action="SvEmpleado" method="POST">
             <div class="col-md-6">
@@ -76,6 +82,6 @@
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </form>
-
+        <%}%>
     </body>
 </html>

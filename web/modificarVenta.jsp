@@ -1,3 +1,9 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Date"%>
+<%@page import="logica.Venta"%>
 <%@page import="logica.Paquete"%>
 <%@page import="logica.ServicioTuristico"%>
 <%@page import="logica.Empleado"%>
@@ -15,7 +21,7 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>        
 
-        <title>Ventas</title>
+        <title>Modificar venta</title>
         <style>
             body {
                 margin-top: 5%;
@@ -34,65 +40,74 @@
               response.sendRedirect("login.jsp");
           } else {
         %>
-        <h1>Nueva venta</h1>
-        <%
-           List<Empleado> listaEmpleados = (List) miSession.getAttribute("empleados");
-           List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("servicios");
-           List<Paquete> listaPaquetes = (List) miSession.getAttribute("paquetes");
-           System.out.println(listaServicios.size());
+        <h1>Modificar venta</h1>
+
+        <% 
+            Venta venta = (Venta) miSession.getAttribute("venta");
+            List<Empleado> listaEmpleados = (List) miSession.getAttribute("listaEmpleados");
+            List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
+            List<Paquete> listaPaquetes = (List) miSession.getAttribute("listaPaquetes");
         %>
-        
-        <form class="row g-3" action="SvVenta" method="POST">
+
+        <form class="row g-3" action="SvModificarVenta" method="get">
             <div class="col-12">
                 <label for="fechaVenta" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="fechaVenta" name="fecha">
+                <%
+                    Date fecha = venta.getFechaVenta();
+                    DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    String strFecha = formato.format(fecha);
+                %>
+                <input type="date" class="form-control" id="fechaServicio" name="fecha" value="<%=strFecha%>">
+
+
             </div>
             <div class="col-md-6">
                 <select class="form-select" aria-label="Default select example" name="medioDePago">
-                    <option selected>Seleccione una forma de pago</option>
+                    <option selected><%=venta.getMedioDePago()%></option>
                     <option value="Efectivo">Efectivo</option>
                     <option value="Tarjeta de débito">Tarjeta de débito</option>
                     <option value="Tarjeta de crédito">Tarjeta de crédito</option>
                 </select>
             </div>
             <div class="col-md-6">
-                
-                <input type="text" class="form-control" placeholder="DNI del cliente" name="dniCliente">
+
+                <input type="text" class="form-control" placeholder=<%=venta.getComprador().getDni()%> name="dniCliente">
             </div>
-            
-            
+
+
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="empleado">
-                    <option selected>Empleado a cargo de la venta</option>
-                    <%for (Empleado emple : listaEmpleados) { %>
+                    <option value="<%=venta.getVendedor().getId()%>"><%=venta.getVendedor().getNombre()%> <%=venta.getVendedor().getApellido()%></option>
+                    <%for (Empleado emple : listaEmpleados) {%>
                     <option value="<%=emple.getId()%>"><%=emple.getNombre()%> <%=emple.getApellido()%></option>
                     <%}%>
                 </select>
             </div>     
-                
-           <div class="col-6">
+
+            <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="paquete">
-                    <option selected>Paquetes disponibles</option>
-                    <%for (Paquete paque : listaPaquetes) { %>
+                    <option selected><%=venta.getPaquete().getCodigo()%></option>
+                    <%for (Paquete paque : listaPaquetes) {%>
                     <option value="<%=paque.getCodigo()%>"><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
                     <%}%>
                 </select>
             </div>       
-                
+
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="servicio">
-                    <option selected>Servcios disponibles</option>
-                    <%for (ServicioTuristico ser : listaServicios) { %>
+                    <option selected><%=venta.getServicio().getCodigo()%></option>
+                    <%for (ServicioTuristico ser : listaServicios) {%>
                     <option value="<%=ser.getCodigo()%>"><%=ser.getCodigo()%></option>
                     <%}%>
                 </select>
             </div>
-                 
 
+           <input type="hidden" value="<%=venta.getNumVenta()%>" name="codigo">
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </form>
-        <%}%>        
+        <%}%>    
     </body>
 </html>
+
