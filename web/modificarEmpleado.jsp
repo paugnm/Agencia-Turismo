@@ -88,9 +88,13 @@
             
             <input type="hidden" value="<%=emple.getId()%>" name="id">
 
-            <div class="col-12">
+            <div class="col-6">
+                <a href="listaEmpleados.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
+            </div>
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
+            
             <%}%> 
         </form>
         <%}%>

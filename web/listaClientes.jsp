@@ -15,10 +15,10 @@
     </head>
     <body>
         <%HttpSession miSession = request.getSession();
-          String usu = (String) miSession.getAttribute("user");
-          if (usu==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usu = (String) miSession.getAttribute("user");
+            if (usu == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
 
         <table class="table table-striped">
@@ -32,15 +32,13 @@
                     <th scope="col">Nacionalidad</th>
                     <th scope="col">Celular</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Cargo</th>
-                    <th scope="col">Sueldo</th>
                     <th scope="col">Eliminar</th>
                     <th scope="col">Modificar</th>
                 </tr>
             </thead>
             <tbody>
 
-                <% 
+                <%
                     List<Cliente> listaClientes = (List) miSession.getAttribute("listaClientes");
                     for (Cliente cli : listaClientes) {
                 %>  
@@ -91,7 +89,9 @@
             </tbody>
         </table>
 
-        <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a> 
+        <div class="col-6">
+            <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
+        </div> 
         <%}%>
     </body>
 </html>

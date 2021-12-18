@@ -18,13 +18,13 @@
         </style>
         <title>Empleado</title>
     </head>
-    
+
     <body>
         <%HttpSession miSession = request.getSession();
-          String usu = (String) miSession.getAttribute("user");
-          if (usu==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usu = (String) miSession.getAttribute("user");
+            if (usu == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
         <h1>Nuevo cliente</h1>
         <form class="row g-3" action="SvCliente" method="POST">
@@ -60,10 +60,13 @@
                 <label for="email" class="form-label">Email</label>
                 <input type="text" class="form-control" id="email" name="email">
             </div>
-
-            <div class="col-12">
+            <div class="col-6">
+                <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
+            </div>
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
+
         </form>
         <%}%>
     </body>

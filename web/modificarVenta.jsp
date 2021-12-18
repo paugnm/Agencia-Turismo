@@ -103,7 +103,7 @@
 
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">
-                    <%if(venta.getPaquete()!=null) {%>
+                    <%if (venta.getPaquete() != null) {%>
                     <option selected><%=venta.getPaquete().getCodigo()%></option>
                     <% } else {%>
                     <option selected>Paquetes disponibles</option>
@@ -116,7 +116,7 @@
 
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" disabled="disabled">
-                    <%if(venta.getServicio()!=null) {%>
+                    <%if (venta.getServicio() != null) {%>
                     <option selected><%=venta.getServicio().getCodigo()%></option>
                     <% } else {%>
                     <option selected>Servicios disponibles</option>
@@ -126,7 +126,7 @@
                     <%}%>
                 </select>
             </div>
-                
+
             <script>
                 function display() {
                     if (document.getElementById("btnPaquete").checked) {
@@ -142,9 +142,14 @@
             </script>    
 
             <input type="hidden" value="<%=venta.getNumVenta()%>" name="codigo">
-            <div class="col-12">
+            <div class="col-6">
+                <a href="listaVentas.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
+            </div
+
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
+
         </form>
         <%}%>    
     </body>

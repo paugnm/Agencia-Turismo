@@ -30,6 +30,8 @@
                     <th scope="col">Codigo</th>
                     <th scope="col">Servicios Incluidos</th>
                     <th scope="col">Costo</th>
+                    <th scope="col">Borrar</th>
+                    <th scope="col">Modificar</th>
                 </tr>
             </thead>
 
@@ -55,7 +57,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td><%=paquete.getCosto()%></td>
+                    <td>$<%=paquete.getCosto()%></td>
 
 
                     <td>
@@ -76,7 +78,9 @@
             </tbody>
         </table>
 
-        <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>    
+        <div class="col-6">
+            <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
+        </div>
         <%}%>
     </body>
 </html>

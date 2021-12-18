@@ -84,7 +84,7 @@
                     <td>
                         <form name="frmUsuario"  action="SvConsultarUsuario" method="GET">
                             <input type="hidden" name="idUsuario" value="<%=idUsuario%>">
-                            <button type="submit" class="btn btn-danger">Ver usuario</button>
+                            <button type="submit" class="btn btn-dark">Ver usuario</button>
                         </form>
                     </td>
                     
@@ -107,7 +107,9 @@
             </tbody>
         </table>
 
-        <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>    
+        <div class="col-6">
+            <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
+        </div>    
         <%}%>
     </body>
 </html>

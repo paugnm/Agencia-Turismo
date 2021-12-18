@@ -13,10 +13,10 @@
     </head>
     <body>
         <%HttpSession miSession = request.getSession();
-          String usua = (String) miSession.getAttribute("user");
-          if (usua==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usua = (String) miSession.getAttribute("user");
+            if (usua == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
         <table class="table table-striped">
             <thead>
@@ -29,7 +29,7 @@
             </thead>
             <tbody>
 
-                <%  
+                <%
                     Usuario usu = (Usuario) miSession.getAttribute("usuario");
                 %>  
 
@@ -57,8 +57,9 @@
                 </tr>        
             </tbody>
         </table>
-
-        <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>
+        <div class="col-6">
+            <a href="listaEmpleados.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
+        </div                    
         <%}%>
     </body>
 </html>

@@ -91,7 +91,9 @@
             </tbody>
         </table>
 
-        <a class="btn btn-secondary" href="index.jsp" role="button" style = "margin: 10px">Volver</a>    
+        <div class="col-6">
+            <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
+        </div>   
         <%}%>
     </body>
 </html>

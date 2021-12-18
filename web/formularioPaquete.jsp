@@ -43,10 +43,13 @@
                 <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected">
                 <label class="form-check-label" for="servicio"><%=serv.getNombre()%> - <%=serv.getDescripcion()%></label>
             </div>
-            <%}%>     
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+            <%}%> 
+            <div class="col-6">
+                <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
             </div>
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>            
              
         </form>
         <%}%>    

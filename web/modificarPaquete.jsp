@@ -49,7 +49,10 @@
             </div>
             <%}%>     
             <input type="hidden" name="codigo" value="<%=paquete.getCodigo()%>">
-            <div class="col-12">
+            <div class="col-6">
+                <a href="listaPaquetes.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
+            </div
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
             

@@ -21,17 +21,17 @@
         </style>
         <title>Modificar usuario</title>
     </head>
-    
+
     <body>
         <%HttpSession miSession = request.getSession();
-          String usu = (String) miSession.getAttribute("user");
-          if (usu==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usu = (String) miSession.getAttribute("user");
+            if (usu == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
         <h1>Modificar usuario</h1>
-        <% 
-        Usuario usuario = (Usuario) miSession.getAttribute("usuario");%>
+        <%
+            Usuario usuario = (Usuario) miSession.getAttribute("usuario");%>
         <form class="row g-3" action="SvModificarUsuario" method="GET">
             <div class="col-md-6">
                 <label for=nombre"" class="form-label">Usuario</label>
@@ -42,9 +42,15 @@
                 <input type="password" class="form-control" id="contrasenia" name="contrasenia" value="<%=usuario.getContrasenia()%>">
             </div> 
             <input type="hidden" value="<%=usuario.getId()%>" name="id">
-            <div class="col-12">
+
+            <div class="col-6">
+                <a href="listaUsuarios.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
+            </div
+
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
+
         </form>
         <%}%>    
     </body>

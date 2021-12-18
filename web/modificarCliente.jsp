@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="es">
-    
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- CSS only -->
@@ -24,20 +24,20 @@
         </style>
         <title>Modificar cliente</title>
     </head>
-    
+
     <body>
         <%HttpSession miSession = request.getSession();
-          String usu = (String) miSession.getAttribute("user");
-          if (usu==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usu = (String) miSession.getAttribute("user");
+            if (usu == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
         <h1>Modificar Cliente</h1>
-        
-        <% 
-           Cliente cli = (Cliente) miSession.getAttribute("cliente");
-        {%>
-        
+
+        <%
+            Cliente cli = (Cliente) miSession.getAttribute("cliente");
+            {%>
+
         <form class="row g-3" action="SvModificarCliente" method="GET">
             <div class="col-md-6">
                 <label for="nombreCli" class="form-label">Nombre</label>
@@ -55,13 +55,13 @@
                 <label for="dni" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni" value="<%=cli.getDni()%>">
             </div>
-            
+
             <%
-              Date fecha = cli.getFechaNacimiento();
-              DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-              String strFecha = formato.format(fecha);
-          %>
-            
+                Date fecha = cli.getFechaNacimiento();
+                DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                String strFecha = formato.format(fecha);
+            %>
+
             <div class="col-md-6">
                 <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
                 <input type="Date" class="form-control" id="fechaNac" name="fechaNac" value="<%=strFecha%>">
@@ -79,16 +79,20 @@
                 <input type="text" class="form-control" id="email" name="email"  value="<%=cli.getEmail()%>">
             </div>
 
-            
+
             <input type="hidden" value="<%=cli.getId()%>" name="id">
 
-            <div class="col-12">
+            <div class="col-6">
+                <a href="listaClientes.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
+            </div>
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
+            
             <%}%> 
         </form>
         <%}%>
     </body>
-    
-    
+
+
 </html>
