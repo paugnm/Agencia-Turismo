@@ -77,14 +77,12 @@
             </div>
 
 
-
-            <div class="form-check">
+  
+            <div class="col-12">
                 <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnPaquete" onclick="display()">
                 <label class="form-check-label" for="btnPaquete">
                     Paquete
                 </label>
-            </div>
-            <div class="form-check">
                 <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnServicio" onclick="display()">
                 <label class="form-check-label" for="btnServicio">
                     Servicio
@@ -92,47 +90,48 @@
             </div>
 
 
-            <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">
-                    <option selected>Paquetes disponibles</option>
-                    <%for (Paquete paque : listaPaquetes) {%>
-                    <option value="<%=paque.getCodigo()%>" ><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
-                    <%}%>
-                </select>
-            </div>   
+
+        <div class="col-6">
+            <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">
+                <option selected>Paquetes disponibles</option>
+                <%for (Paquete paque : listaPaquetes) {%>
+                <option value="<%=paque.getCodigo()%>" >Cod. paquete: <%=paque.getCodigo()%> - Costo: $<%=paque.getCosto()%></option>
+                 <%}%>                   
+            </select>              
+        </div>   
 
 
-            <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" disabled="disabled">
-                    <option selected>Servicios disponibles</option>
-                    <%for (ServicioTuristico ser : listaServicios) {%>
-                    <option value="<%=ser.getCodigo()%>" > <%=ser.getCodigo()%> </option>
-                    <%}%>
-                </select>
-            </div>         
+        <div class="col-6">
+            <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" disabled="disabled">
+                <option selected>Servicios disponibles</option>
+                <%for (ServicioTuristico ser : listaServicios) {%>
+                <option value="<%=ser.getCodigo()%>" > Cod. servicio: <%=ser.getCodigo()%> - Tipo: <%=ser.getNombre()%> - Costo: $<%=ser.getCosto()%> </option>
+                <%}%>
+            </select>
+        </div>         
 
-            <script>
-                function display() {
-                    if (document.getElementById("btnPaquete").checked) {
-                        document.getElementById("selectPaquete").disabled = false;
-                        document.getElementById("selectServicio").disabled = true;
-                        document.getElementById("selectServicio").selectedIndex = 0;
-                        document.getElementById("selectSercicio").value = null;
-                    } else {
-                        document.getElementById("selectServicio").disabled = false;
-                        document.getElementById("selectPaquete").disabled = true;
-                        document.getElementById("selectPaquete").value = null;
-                        document.getElementById("selectPaquete").selectedIndex = 0;
-                    }
+        <script>
+            function display() {
+                if (document.getElementById("btnPaquete").checked) {
+                    document.getElementById("selectPaquete").disabled = false;
+                    document.getElementById("selectServicio").disabled = true;
+                    document.getElementById("selectServicio").selectedIndex = 0;
+                    document.getElementById("selectSercicio").value = null;
+                } else {
+                    document.getElementById("selectServicio").disabled = false;
+                    document.getElementById("selectPaquete").disabled = true;
+                    document.getElementById("selectPaquete").value = null;
+                    document.getElementById("selectPaquete").selectedIndex = 0;
                 }
-            </script>   
+            }
+        </script>   
 
 
 
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </form>
-        <%}%>        
-    </body>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+    <%}%>        
+</body>
 </html>

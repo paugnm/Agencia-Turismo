@@ -32,13 +32,13 @@
           } else {
         %>
         <h1>Nuevo paquete</h1>
-        
+        <h2>Servicios disponibles</h2>
         <%     List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
                for (ServicioTuristico serv : listaServicios) {
         %> 
         
         <form class="row g-3" action="SvPaquete" method="POST">
-            <h1>Servicios disponibles</h1>
+            
             <div class="col-md-12 form-check">
                 <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected">
                 <label class="form-check-label" for="servicio"><%=serv.getNombre()%> - <%=serv.getDescripcion()%></label>

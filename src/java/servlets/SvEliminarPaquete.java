@@ -31,15 +31,21 @@ public class SvEliminarPaquete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int codigo = Integer.valueOf(request.getParameter("codigo"));
-        control.bajaPaquete(codigo);
+       
         
         List<Venta> listaVentas = control.obtenerVentas();
         
         for (Venta venta : listaVentas) {
-            if (venta.getServicio().getCodigo() == codigo) {
-                control.bajaVenta(venta);
-            }
+            try {
+                if (venta.getPaquete().getCodigo() == codigo) {
+                    control.bajaVenta(venta);
+                }
+            } catch(NullPointerException e) {
+               System.out.println("La venta no contiene paquetes");
+            }    
         }
+        
+         control.bajaPaquete(codigo);
         
         //Actualizo la lista de paquetes
         request.getSession().setAttribute("listaPaquetes",control.obtenerPaquetes());

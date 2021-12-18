@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -20,6 +14,7 @@ import logica.ServicioTuristico;
 
 @WebServlet(name = "SvPaquete", urlPatterns = {"/SvPaquete"})
 public class SvPaquete extends HttpServlet {
+
     Controladora control = new Controladora();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -39,25 +34,28 @@ public class SvPaquete extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         List<ServicioTuristico> serviciosIncluidosPaquete = new ArrayList();
-        
+
         String[] checked = request.getParameterValues("selected");
-       
-        //SOLO LE DOY ALTA AL PAQUETE SI INCLUYE AL MENOS DOS SERVICIOS
-        if (checked.length>=2) {
-             for (int i=0; i<checked.length; i++)
-             {
-                serviciosIncluidosPaquete.add(control.buscarServicio(Integer.parseInt(checked[i])));
-             }
+
         
-            control.crearPaquete(serviciosIncluidosPaquete);
+        //USO EL TRY-CATCH PORQUE SI NO SELECCIONO NINGÚN PAQUETE SALE UNA NULL POINTER EXCEPTION
+        try {
+            //SOLO LE DOY ALTA AL PAQUETE SI INCLUYE AL MENOS DOS SERVICIOS
+            if (checked.length >= 2) {
+                for (int i = 0; i < checked.length; i++) {
+                    serviciosIncluidosPaquete.add(control.buscarServicio(Integer.parseInt(checked[i])));
+                }
+
+                control.crearPaquete(serviciosIncluidosPaquete);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("No hay ningún paquete seleccionado");
         }
         response.sendRedirect("formularioPaquete.jsp");
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -71,9 +71,12 @@ public class SvVenta extends HttpServlet {
             } catch (Exception e){
                 paquete = null;
             }         
+             
+            //SI SERVIcio O PAQUETE TIENEN DATOS (NO PUEDO TENER AMBOS EN NULL) CREO LA VENTA  
             
-            
-            control.crearVenta(medioPago, fecha, cliente, servi, paquete, emple);
+            if(servi!=null || paquete != null) {
+                control.crearVenta(medioPago, fecha, cliente, servi, paquete, emple);
+            }
             response.sendRedirect("formularioVentas.jsp");
             
         } catch (Exception ex) {

@@ -90,18 +90,16 @@
                 </select>
             </div>     
 
-            <div class="form-check">
+            <div class="col-12">
                 <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnPaquete" onclick="display()">
                 <label class="form-check-label" for="btnPaquete">
                     Paquete
                 </label>
-            </div>
-            <div class="form-check">
                 <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnServicio" onclick="display()">
                 <label class="form-check-label" for="btnServicio">
                     Servicio
                 </label>
-            </div>    
+            </div> 
 
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">

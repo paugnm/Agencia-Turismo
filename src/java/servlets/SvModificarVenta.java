@@ -21,11 +21,10 @@ import logica.ServicioTuristico;
 import logica.Venta;
 import servlets.SvModificarServicio;
 
-
 @WebServlet(urlPatterns = {"/SvModificarVenta"})
 public class SvModificarVenta extends HttpServlet {
-    Controladora control = new Controladora();
 
+    Controladora control = new Controladora();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,43 +34,43 @@ public class SvModificarVenta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
+        try {
             int empleId = Integer.parseInt(request.getParameter("empleado"));
             String medioPago = request.getParameter("medioDePago");
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = formato.parse(request.getParameter("fecha"));
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-            
+            Cliente cliente = control.buscarCliente(idCliente);
+
             ServicioTuristico servicio;
-            try{
+            try {
                 servicio = control.buscarServicio(Integer.valueOf(request.getParameter("servicio")));
-            } catch (Exception e){
+            } catch (Exception e) {
                 servicio = null;
             }
-            
-            Paquete paquete; 
-             try{
+
+            Paquete paquete;
+            try {
                 paquete = control.buscarPaquete(Integer.valueOf(request.getParameter("paquete")));
-            } catch (Exception e){
+            } catch (Exception e) {
                 paquete = null;
-            }         
-            
-            Cliente cliente = control.buscarCliente(idCliente);
-            
-            Venta venta = control.buscarVenta(Integer.parseInt(request.getParameter("codigo")));
-  
-            venta.setFechaVenta(fecha);
-            venta.setServicio(servicio);
-            venta.setMedioDePago(medioPago);
-            venta.setPaquete(paquete);
-            venta.setVendedor(control.buscarEmpleado(empleId));
-            venta.setComprador(cliente);
-            
-            control.modificarVenta(venta);
-            
-            //Actualizo mi lista de ventas
-            request.getSession().setAttribute("listaVentas", control.obtenerVentas());
-            
+            }
+
+            //SI SERVIcio O PAQUETE TIENEN DATOS (NO PUEDO TENER AMBOS EN NULL) CREO LA VENTA  
+            if (servicio != null || paquete != null) {
+                Venta venta = control.buscarVenta(Integer.parseInt(request.getParameter("codigo")));
+                venta.setFechaVenta(fecha);
+                venta.setServicio(servicio);
+                venta.setMedioDePago(medioPago);
+                venta.setPaquete(paquete);
+                venta.setVendedor(control.buscarEmpleado(empleId));
+                venta.setComprador(cliente);
+
+                control.modificarVenta(venta);
+
+                //Actualizo mi lista de ventas
+                request.getSession().setAttribute("listaVentas", control.obtenerVentas());
+            }
             response.sendRedirect("listaVentas.jsp");
         } catch (ParseException ex) {
             Logger.getLogger(SvModificarServicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,12 +78,12 @@ public class SvModificarVenta extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         Venta venta = control.buscarVenta(codigo);
-        
+
         HttpSession miSession = request.getSession();
         miSession.setAttribute("venta", venta);
         miSession.setAttribute("listaEmpleados", control.obtenerEmpleados());
