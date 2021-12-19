@@ -63,7 +63,7 @@
 
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <select class="form-select" aria-label="Default select example" name="medioDePago">
                     <option selected><%=venta.getMedioDePago()%></option>
                     <option value="Efectivo">Efectivo</option>
@@ -71,7 +71,7 @@
                     <option value="Tarjeta de crédito">Tarjeta de crédito</option>
                 </select>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <select class="form-select" aria-label="Default select example" name="idCliente">
                     <option value="<%=venta.getComprador().getId()%>"><%=venta.getComprador().getNombre()%> <%=venta.getComprador().getApellido()%></option>
                     <%for (Cliente cli : listaClientes) {%>
@@ -81,7 +81,7 @@
             </div>
 
 
-            <div class="col-6">
+            <div class="col-4">
                 <select class="form-select" aria-label="Default select example" name="empleado">
                     <option value="<%=venta.getVendedor().getId()%>"><%=venta.getVendedor().getNombre()%> <%=venta.getVendedor().getApellido()%></option>
                     <%for (Empleado emple : listaEmpleados) {%>
@@ -103,26 +103,29 @@
 
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">
+                    <!--Si tengo un paquete seleccionado previamente, lo muestro, sino muestro el texto "Paquetes disponibles"-->
                     <%if (venta.getPaquete() != null) {%>
                     <option selected><%=venta.getPaquete().getCodigo()%></option>
                     <% } else {%>
                     <option selected>Paquetes disponibles</option>
                     <%}%>
                     <%for (Paquete paque : listaPaquetes) {%>
-                    <option value="<%=paque.getCodigo()%>"><%=paque.getCodigo()%> - <%=paque.getCosto()%></option>
+                    <option value="<%=paque.getCodigo()%>">Cod. paquete: <%=paque.getCodigo()%> - Costo: $<%=paque.getCosto()%></option>
                     <%}%>
                 </select>
             </div>       
 
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" disabled="disabled">
+                    
+                    <!--Si tengo un servicio seleccionado previamente, lo muestro, sino muestro el texto "Servicios disponibles"-->
                     <%if (venta.getServicio() != null) {%>
                     <option selected><%=venta.getServicio().getCodigo()%></option>
                     <% } else {%>
                     <option selected>Servicios disponibles</option>
                     <%}%>
                     <%for (ServicioTuristico ser : listaServicios) {%>
-                    <option value="<%=ser.getCodigo()%>"><%=ser.getCodigo()%></option>
+                    <option value="<%=ser.getCodigo()%>"> Cod. servicio: <%=ser.getCodigo()%> - Tipo: <%=ser.getNombre()%> - Costo: $<%=ser.getCosto()%></option>
                     <%}%>
                 </select>
             </div>
@@ -143,9 +146,8 @@
 
             <input type="hidden" value="<%=venta.getNumVenta()%>" name="codigo">
             <div class="col-6">
-                <a href="listaVentas.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
-            </div
-
+                <a class="btn btn-warning" href="listaVentas.jsp" role="button">Volver</a>
+            </div>
             <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>

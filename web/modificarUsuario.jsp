@@ -41,12 +41,12 @@
                 <label for=contrasenia"" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="contrasenia" name="contrasenia" value="<%=usuario.getContrasenia()%>">
             </div> 
-            <input type="hidden" value="<%=usuario.getId()%>" name="id">
+            <input style="display: none"; value="<%=usuario.getId()%>" name="id">
+
 
             <div class="col-6">
-                <a href="listaUsuarios.jsp"  ><button type="button" class="btn btn-warning">Volver</button></a>
-            </div
-
+                <a class="btn btn-warning" href="listaEmpleados.jsp" role="button">Volver</a>
+            </div>
             <div class="col-6">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>

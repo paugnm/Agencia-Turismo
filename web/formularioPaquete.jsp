@@ -26,32 +26,47 @@
     </head>
     <body>
         <%HttpSession miSession = request.getSession();
-          String usu = (String) miSession.getAttribute("user");
-          if (usu==null) {
-              response.sendRedirect("login.jsp");
-          } else {
+            String usu = (String) miSession.getAttribute("user");
+            if (usu == null) {
+                response.sendRedirect("login.jsp");
+            } else {
         %>
         <h1>Nuevo paquete</h1>
-        <h2>Servicios disponibles</h2>
-        <%     List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
-               for (ServicioTuristico serv : listaServicios) {
-        %> 
-        
-        <form class="row g-3" action="SvPaquete" method="POST">
-            
-            <div class="col-md-12 form-check">
-                <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected">
-                <label class="form-check-label" for="servicio"><%=serv.getNombre()%> - <%=serv.getDescripcion()%></label>
-            </div>
-            <%}%> 
-            <div class="col-6">
-                <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
-            </div>
-            <div class="col-6">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>            
-             
-        </form>
-        <%}%>    
-    </body>
+        <p>Seleccione los serviocios que desea incluir en el nuevo paquete.</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nombre del servicio</th>
+                    <th scope="col">Descripción del servicio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%     List<ServicioTuristico> listaServicios = (List) miSession.getAttribute("listaServicios");
+                    for (ServicioTuristico serv : listaServicios) {
+                %> 
+
+            <form class="row g-3" action="SvPaquete" method="POST">
+                <tr>
+                    <td>   
+                        <div class="col-md-12 form-check">
+                            <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected">
+                        </div>
+                    </td> 
+                    <td><%=serv.getNombre()%></td>
+                    <td><%=serv.getDescripcion()%></td>
+                </tr>
+                <%}%> 
+                </tbody>
+        </table>
+        <div class="col-6">
+            <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>            
+
+    </form>
+    <%}%>    
+</body>
 </html>

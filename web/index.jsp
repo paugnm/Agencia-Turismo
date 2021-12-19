@@ -42,7 +42,7 @@
 		<section id="intro" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
 				<h1>Bienvenido</h1>
-				<p>Sistema de gestión de recursos. Aquí podrás administras las altas, bajas, modificaciones y lecturas de los diferentes recursos de una agencia de turismo.</p>
+				<p>Sistema de gestión de recursos. Aquí podrás administrar las altas, bajas, modificaciones y lecturas de los diferentes recursos de la agencia de turismo.</p>
 				<ul class="actions">
                                     <form action="SvLogout" method="get">
 					<li><a href="SvLogout" class="button scrolly">Salir</a></li>
