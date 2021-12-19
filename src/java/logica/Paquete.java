@@ -66,12 +66,12 @@ public class Paquete implements Serializable {
         return costo -= costo*0.1;
     }
     
-    public String isChecked(int codServicio){
-        String checked="";
+    public boolean isChecked(int codServicio){
+        boolean checked=false;
         
         for (ServicioTuristico serv : listaServiciosIncluidos){
             if(serv.getCodigo() == codServicio) {
-                checked = "checked";
+                checked = true;
                 return checked;
             }        
         }

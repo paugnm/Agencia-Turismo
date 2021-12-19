@@ -43,7 +43,7 @@
 
                     <td> 
                         <div class="col-md-12 form-check">                
-                            <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected"  <%=paquete.isChecked(serv.getCodigo())%>>
+                            <input type="checkbox" class="form-check-input" id="servicio" value="<%=serv.getCodigo()%>" name="selected"  <%=paquete.isChecked(serv.getCodigo()) ? "checked" : ""%>>
                         </div>                           
                     </td> 
                     <td><%=serv.getNombre()%></td>

@@ -56,7 +56,7 @@ public class SvModificarVenta extends HttpServlet {
                 paquete = null;
             }
 
-            //SI SERVIcio O PAQUETE TIENEN DATOS (NO PUEDO TENER AMBOS EN NULL) CREO LA VENTA  
+            //SI SERVICIO O PAQUETE TIENEN DATOS (NO PUEDO TENER AMBOS EN NULL) CREO LA VENTA  
             if (servicio != null || paquete != null) {
                 Venta venta = control.buscarVenta(Integer.parseInt(request.getParameter("codigo")));
                 venta.setFechaVenta(fecha);
@@ -65,9 +65,7 @@ public class SvModificarVenta extends HttpServlet {
                 venta.setPaquete(paquete);
                 venta.setVendedor(control.buscarEmpleado(empleId));
                 venta.setComprador(cliente);
-
                 control.modificarVenta(venta);
-
                 //Actualizo mi lista de ventas
                 request.getSession().setAttribute("listaVentas", control.obtenerVentas());
             }

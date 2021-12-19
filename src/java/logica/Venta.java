@@ -106,5 +106,20 @@ public class Venta implements Serializable {
         this.comprador = comprador;
     }
             
-       
+     
+    public boolean incluyeServicio() {
+        if (getServicio()!=null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+     public boolean incluyePaquete() {
+        if (getPaquete()!=null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
 import logica.Empleado;
+import logica.Venta;
 
 
 @WebServlet(name = "SvEliminarUsuario", urlPatterns = {"/SvEliminarUsuario"})
@@ -36,12 +37,26 @@ public class SvEliminarUsuario extends HttpServlet {
         
         List<Empleado> listaEmpleados = control.obtenerEmpleados();
         
+        List<Venta> listaVentas = control.obtenerVentas();
+        
+        int empleId=-1;
+        
+        //BUSCO EL ID DEL EMPLEADO RELACIONADO CON EL USUARIO QUE QUIERO BORRAR
         for(Empleado emple : listaEmpleados) {
             if (emple.getUsuario().getId()==id) {
-                control.bajaEmpleado(emple);
-                break;
+                empleId =  emple.getId();
+            } 
+        }    
+        
+        for (Venta venta : listaVentas) {
+            if (venta.getVendedor().getId() == empleId) {
+                control.bajaVenta(venta);
             }
         }
+     
+        
+        control.bajaEmpleado(empleId);  
+
         control.bajaUsuario(id);
         HttpSession miSession = request.getSession();        
         miSession.setAttribute("listaUsuarios", control.obtenerUsuarios()); 

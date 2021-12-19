@@ -91,21 +91,21 @@
             </div>     
 
             <div class="col-12">
-                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnPaquete" onclick="display()">
+                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnPaquete" onclick="display()" <%=venta.incluyePaquete() ? "checked" : ""%>>
                 <label class="form-check-label" for="btnPaquete">
                     Paquete
                 </label>
-                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnServicio" onclick="display()">
+                <input class="form-check-input" type="radio" name="tipoDeCompra" id="btnServicio" onclick="display()" <%=venta.incluyeServicio() ? "checked" : ""%>>
                 <label class="form-check-label" for="btnServicio">
                     Servicio
                 </label>
             </div> 
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" disabled="disabled">
+                <select class="form-select" aria-label="Default select example" name="paquete" id="selectPaquete" <%=venta.incluyePaquete() ? "" : "disabled"%>>
                     <!--Si tengo un paquete seleccionado previamente, lo muestro, sino muestro el texto "Paquetes disponibles"-->
                     <%if (venta.getPaquete() != null) {%>
-                    <option selected><%=venta.getPaquete().getCodigo()%></option>
+                    <option selected value="<%=venta.getPaquete().getCodigo()%>">Cod. paquete:<%=venta.getPaquete().getCodigo()%> - Costo: $:<%=venta.getPaquete().getCosto()%></option>
                     <% } else {%>
                     <option selected>Paquetes disponibles</option>
                     <%}%>
@@ -116,11 +116,10 @@
             </div>       
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio" disabled="disabled">
-                    
+                <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio"  <%=venta.incluyeServicio() ? "" : "disabled"%>>                   
                     <!--Si tengo un servicio seleccionado previamente, lo muestro, sino muestro el texto "Servicios disponibles"-->
                     <%if (venta.getServicio() != null) {%>
-                    <option selected><%=venta.getServicio().getCodigo()%></option>
+                    <option selected value="<%=venta.getServicio().getCodigo()%>">Cod. servicio:<%=venta.getServicio().getCodigo()%> - Costo: $:<%=venta.getServicio().getCosto()%></option>
                     <% } else {%>
                     <option selected>Servicios disponibles</option>
                     <%}%>
