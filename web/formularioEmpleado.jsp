@@ -20,12 +20,12 @@
     </head>
 
     <body>
-        <%HttpSession miSession = request.getSession();
+      <%HttpSession miSession = request.getSession();
             String usu = (String) miSession.getAttribute("user");
             if (usu == null) {
                 response.sendRedirect("login.jsp");
             } else {
-        %>
+        %> 
         <h1>Nuevo Empleado</h1>
         <form class="row g-3" action="SvEmpleado" method="POST">
             <div class="col-md-6">
@@ -45,7 +45,7 @@
                 <input type="password" class="form-control" id="contrasenia" name="contrasenia">
             </div>
             <div class="col-md-6">
-                <label for="direccion" class="form-label">Direccion</label>
+                <label for="direccion" class="form-label">Dirección</label>
                 <input type="text" class="form-control" id="direccion" name="direccion">
             </div>
             <div class="col-md-6">

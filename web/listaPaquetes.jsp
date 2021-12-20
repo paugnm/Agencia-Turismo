@@ -27,8 +27,8 @@
             <thead>
                 <!-- tr: table row, th: table header, td: table data-->
                 <tr>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Servicios Incluidos</th>
+                    <th scope="col">Codigo de paquete</th>
+                    <th scope="col">Servicios incluídos en el paquete</th>
                     <th scope="col">Costo</th>
                     <th scope="col">Borrar</th>
                     <th scope="col">Modificar</th>
@@ -51,8 +51,8 @@
                             %>
                             <tr>
                                 <td>
-                                    <%=ser.getDescripcion()%>
-                                    <%}%> 
+                                    <b>Servicio:</b> <%=ser.getNombre()%>   -   <b>Detalle:</b> <%=ser.getDescripcion()%>                                     
+                                <%}%>
                                 </td>
                             </tr>
                         </table>

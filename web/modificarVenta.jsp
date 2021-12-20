@@ -63,7 +63,7 @@
 
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <select class="form-select" aria-label="Default select example" name="medioDePago">
                     <option selected><%=venta.getMedioDePago()%></option>
                     <option value="Efectivo">Efectivo</option>
@@ -71,8 +71,9 @@
                     <option value="Tarjeta de crédito">Tarjeta de crédito</option>
                 </select>
             </div>
-            <div class="col-4">
-                <select class="form-select" aria-label="Default select example" name="idCliente">
+            <div class="col-6">
+                <label for="cli">Cliente</label>
+                <select id="cli" class="form-select" aria-label="Default select example" name="idCliente">
                     <option value="<%=venta.getComprador().getId()%>"><%=venta.getComprador().getNombre()%> <%=venta.getComprador().getApellido()%></option>
                     <%for (Cliente cli : listaClientes) {%>
                     <option value="<%=cli.getId()%>"><%=cli.getNombre()%> <%=cli.getApellido()%></option>
@@ -81,8 +82,9 @@
             </div>
 
 
-            <div class="col-4">
-                <select class="form-select" aria-label="Default select example" name="empleado">
+            <div class="col-6">
+                 <label for="emple">Empleado</label>
+                <select for="emple" class="form-select" aria-label="Default select example" name="empleado">
                     <option value="<%=venta.getVendedor().getId()%>"><%=venta.getVendedor().getNombre()%> <%=venta.getVendedor().getApellido()%></option>
                     <%for (Empleado emple : listaEmpleados) {%>
                     <option value="<%=emple.getId()%>"><%=emple.getNombre()%> <%=emple.getApellido()%></option>
@@ -119,7 +121,7 @@
                 <select class="form-select" aria-label="Default select example" name="servicio" id="selectServicio"  <%=venta.incluyeServicio() ? "" : "disabled"%>>                   
                     <!--Si tengo un servicio seleccionado previamente, lo muestro, sino muestro el texto "Servicios disponibles"-->
                     <%if (venta.getServicio() != null) {%>
-                    <option selected value="<%=venta.getServicio().getCodigo()%>">Cod. servicio:<%=venta.getServicio().getCodigo()%> - Costo: $:<%=venta.getServicio().getCosto()%></option>
+                    <option selected value="<%=venta.getServicio().getCodigo()%>">Cod. servicio: <%=venta.getServicio().getCodigo()%> - Costo: $:<%=venta.getServicio().getCosto()%></option>
                     <% } else {%>
                     <option selected>Servicios disponibles</option>
                     <%}%>

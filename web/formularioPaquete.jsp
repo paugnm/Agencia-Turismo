@@ -32,13 +32,14 @@
             } else {
         %>
         <h1>Nuevo paquete</h1>
-        <p>Seleccione los serviocios que desea incluir en el nuevo paquete.</p>
+        <p>Seleccione los servicios que desea incluir en el nuevo paquete.</p>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Nombre del servicio</th>
                     <th scope="col">Descripción del servicio</th>
+                    <th scope="col">Destino</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,16 +56,16 @@
                     </td> 
                     <td><%=serv.getNombre()%></td>
                     <td><%=serv.getDescripcion()%></td>
+                    <td><%=serv.getDestino()%></td>
                 </tr>
                 <%}%> 
                 </tbody>
         </table>
-        <div class="col-6">
-            <a href="index.jsp"  ><button type="button" class="btn btn-warning">Volver a inicio</button></a>
+
+        <div class="btn-group">
+            <a class="btn btn-warning" href="index.jsp" role="button" style="margin-right:1rem;">Volver a inicio</a>
+            <button type="submit" class="btn btn-primary">Crear paquete</button>
         </div>
-        <div class="col-6">
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </div>            
 
     </form>
     <%}%>    

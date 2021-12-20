@@ -49,7 +49,7 @@
                 <label for="fechaVenta" class="form-label">Fecha</label>
                 <input type="date" class="form-control" id="fechaVenta" name="fecha">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <select class="form-select" aria-label="Default select example" name="medioDePago">
                     <option selected>Seleccione una forma de pago</option>
                     <option value="Efectivo">Efectivo</option>
@@ -59,7 +59,8 @@
             </div>
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="idCliente">
+                <label for="cli">Cliente</label>
+                <select id="cli" class="form-select" aria-label="Default select example" name="idCliente">
                     <option selected>Cliente</option>
                     <%for (Cliente cli : listaClientes) {%>
                     <option value="<%=cli.getId()%>"><%=cli.getNombre()%> <%=cli.getApellido()%></option>
@@ -68,7 +69,8 @@
             </div>
 
             <div class="col-6">
-                <select class="form-select" aria-label="Default select example" name="empleado">
+                <label for="emple">Empleado</label>
+                <select id="emple" class="form-select" aria-label="Default select example" name="empleado">
                     <option selected>Empleado a cargo de la venta</option>
                     <%for (Empleado emple : listaEmpleados) {%>
                     <option value="<%=emple.getId()%>"><%=emple.getNombre()%> <%=emple.getApellido()%></option>
